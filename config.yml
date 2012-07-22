@@ -23,11 +23,11 @@ domain:
 # Used in header meta tags and the site feed.
 author: Andrey Antukh
 # A description of your site to be used in header meta tags.
-description:
+description: Personal site of Andrey Antukh
 # Used in the site feed.
 email: niwi@niwi.be
 # Your site's subtitle.
-subtitle:
+subtitle: keep it simple, stupid
 # Your site's title.
 title: Niwi.Be
 
@@ -38,7 +38,7 @@ title: Niwi.Be
 
 # The amount of posts that will be displayed on the front page.
 #   Leave blank or set to `false` to disable.
-post_limit: 10
+post_limit: 7
 
 
 #
@@ -46,7 +46,7 @@ post_limit: 10
 #
 
 # If you'd like to enable Google Analytics for your site, set this to your tracking code.
-analytics:
+analytics: UA-23352570-2
 # Set this to True to enable an Atom feed of your site.
 #   NOTE: `author`, `domain`, and `title` must be set to generate a valid feed.
 feed: true
@@ -55,12 +55,12 @@ feed: true
 social:
     dribbble:
     facebook:
-    github:
+    github: niwibe
     google_plus:
     lastfm:
     stack_overflow:
     steam:
-    twitter:
+    twitter: niwibe
 
 
 #
