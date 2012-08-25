@@ -1,0 +1,57 @@
+URxvt.perl-ext-common:      default,matcher,clipboard
+URxvt.urlLauncher:          /usr/bin/chromium
+URxvt.matcher.button:       1
+URxvt.buffered:             true
+
+## borderless and no scrollbar
+URxvt*scrollBar_right:      false
+URxvt*termName:             screen-256color
+
+URxvt*font: xft:terminus:pixelsize=14:size=14
+#URxvt*font: xft:Bitstream Vera Sans Mono:pixelsize=11
+#URxvt*font: xft:monospace:pixelsize=11
+#URxvt.loginShell:        true
+
+Xft.dpi:                 96
+Xft.antialias:           true
+Xft.hinting:             true
+Xft.hintstyle:           3
+
+urxvt.realBold:             true
+urxvt*borderLess:           false
+urxvt*externalBorder:       0
+urxvt*internalBorder:       2
+urxvt*scrollBar:            false
+urxvt*depth:                32
+URxvt.shading:              30
+urxvt*cursorBlink:          true
+urxvt*inheritPixmap:        false
+urxvt*termName:             rxvt-unicode
+urxvt*saveLines:            65535
+urxvt*scrollTtyOutput:      true
+urxvt*scrollTtyKeypress:    true
+urxvt*mouseWheelScrollPage: true
+urxvt*cutchars:             `'",;@&*=|?()<>[]{}
+
+
+# Colors
+*background: #111111
+*foreground: #babdb6
+*color0:  #000000
+*color8:  #555753
+*color1:  #ff6565
+*color9:  #ff8d8d
+*color2:  #93d44f
+*color10: #c8e7a8
+*color3:  #eab93d
+*color11: #ffc123
+*color4:  #204a87
+*color12: #3465a4
+*color5:  #ce5c00
+*color13: #f57900
+*color6:  #89b6e2
+*color14: #46a4ff
+*color7:  #444444
+*color15: #ffffff
+
+urxvt.background: #131313
