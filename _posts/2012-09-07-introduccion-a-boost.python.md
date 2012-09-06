@@ -1,6 +1,6 @@
 ---
 layout: post.html
-title: Introduccón a boost::python con python3
+title: Introducción a boost::python con python3
 tags: [python python3 metaprogramming]
 ---
 
