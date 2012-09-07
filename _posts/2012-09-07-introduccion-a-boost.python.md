@@ -1,7 +1,7 @@
 ---
 layout: post.html
 title: Introducción a boost::python con python3
-tags: [python python3 metaprogramming]
+tags: [python, python3, c++, boost]
 ---
 
 
@@ -136,11 +136,5 @@ Para entender un poquito, aun que creo que se entiende solo con ver el ejemplo, 
 A continuacion, se definen las funciones miembro de la clase que se quiere exponer mediante el metodo `py::def`, esto es igual que el primer ejemplo solo que con la variación de que tiene que exponer un metodo miembro de una clase y no una simple funcion. Y luego, por ultimo tenemos `add_property` con la que podemos añadir propertyes de clases de python con un setter y un getter. Si omitimos el setter, la property queda en modo solo lectura.
 
 Existen otros metodos para exponer atributos publicos directamente sin seters y getters, y otras muchas opciones que pueden ser consultado en la documentación oficial.
-
-
-Con esto termina esta parte, y en un futuro veo de continuar explicar mas detalles de `Boost::Python` en otros articulos, esto es igual que el primer ejemplo solo que con la variación de que tiene que exponer un metodo miembro de una clase y no una simple funcion. Y luego, por ultimo tenemos `add_property` con la que podemos añadir propertyes de clases de python con un setter y un getter. Si omitimos el setter, la property queda en modo solo lectura.
-
-Existen otros metodos para exponer atributos publicos directamente sin seters y getters, y otras muchas opciones que pueden ser consultado en la documentación oficial.
-
 
 Con esto termina esta parte, y en un futuro veo de continuar explicar mas detalles de `Boost::Python` en otros articulos.

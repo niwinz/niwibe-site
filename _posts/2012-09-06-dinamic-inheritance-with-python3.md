@@ -1,7 +1,7 @@
 ---
 layout: post.html
 title: Dynamic inheritance with python3
-tags: [python python3 metaprogramming]
+tags: [python, python3, metaprogramming]
 ---
 
 I've been experimenting in my spare time with metaclasses in python3 and I had an idea (for possible use). I need an instance of an object inherits from several mixins, but I will not declare the class.
