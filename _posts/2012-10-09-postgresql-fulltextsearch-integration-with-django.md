@@ -95,6 +95,13 @@ Obviously, we can add more rules to the query with django standard methods:
 [<Page: Page: Home page>, <Page: Page: About>]
 ~~~
 
+## How to install ##
+
+Run ``python setup.py install`` to install, or place ``djorm_pgfulltext`` on your Python path.
+
+You can also install it with: ``pip install djorm-ext-pgfulltext``
+
+
 ## Conclusion ##
 
 This is the solution we have implemented several projects to solve this problem. If you think you can improve, I will be happy to discuss the issue and implement improvements.
