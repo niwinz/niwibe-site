@@ -143,6 +143,7 @@ h6 {
 
 li {
   margin-top: 3px;
+  line-height: 23px;
 }
 ol > li:before, ul > li:before {
   padding-right: 8px;
