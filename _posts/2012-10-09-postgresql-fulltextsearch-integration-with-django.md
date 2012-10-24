@@ -23,7 +23,7 @@ There are several ways of using them, explain two ways. In the first case, we wi
 
 For performance, you must manually add GIST and GIN indexes for queries to be performed for both the field tsvector as for dynamic queries.
 
-##### A fist way #####
+##### A first way #####
 
 Define a example models:
 
