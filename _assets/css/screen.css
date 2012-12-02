@@ -22,6 +22,7 @@
   padding: 0px;
   border-width: 0px;
   outline: invert none 0px;
+  font-family: monospace !important;
 }
 
 body {
@@ -29,6 +30,7 @@ body {
   color: #404040;
   font-family: "Arial", "Helvetica", sans-serif;
   font-size: 14px;
+  /*background: url("../images/grid-squares.png");*/
 }
 
 blockquote, dl, ol, p, pre, table, ul {
@@ -90,10 +92,10 @@ dt:first-child {
 
 h1, h2, h3, h4, h5, h6 {
   margin: 15px 0px 15px 0px;
-  color: #0d0d0d;
+  /*color: #0d0d0d;*/
   text-shadow: 1px 1px 0px #cccccc;
   font-family: "Georgia", serif;
-  font-style: italic;
+  /*font-style: italic;*/
   font-weight: normal;
 }
 h1 a, h2 a, h3 a, h4 a, h5 a, h6 a {
@@ -120,12 +122,12 @@ h5, h6 {
 }
 
 h1 {
-  font-size: 28px;
+  font-size: 25px;
 }
 
 h2 {
   margin-top: 25px;
-  font-size: 24px;
+  font-size: 23px;
 }
 
 h3 {
@@ -255,12 +257,14 @@ a:hover {
 }
 
 code {
-  padding: 0px 2px 0px 2px;
+  /*padding: 0px 2px 0px 2px;
   background-color: #e6e6e6;
   border: 1px solid #d9d9d9;
   -webkit-box-shadow: 0px 0px 0px 2px #f2f2f2;
   box-shadow: 0px 0px 0px 2px #f2f2f2;
   white-space: pre;
+  */
+  font-weight: bold;
 }
 
 small {
@@ -275,8 +279,36 @@ small a {
 }
 
 #container {
-  margin: 0px auto 0px auto;
-  width: 900px;
+    margin: 0px auto 0px auto;
+    margin-top: 10px;
+    width: 900px;
+    padding: 20px;
+    padding-top:0px;
+    /*background: url("../images/wash-white-30.png");*/
+    /*background-color: white;*/
+    z-index:10;
+    position: relative;
+}
+
+
+#grid {
+    position: fixed;
+    bottom: 0;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 5;
+    background-image: url("../images/grid.png");
+}
+
+#grid2 {
+    position: fixed;
+    bottom: 0;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 6;
+    background-image: url("../images/pixel-50-percent.png");
 }
 
 #nav:before, #nav:after {
@@ -309,7 +341,7 @@ small a {
 #nav a {
   color: #333333;
   font-size: 12px;
-  font-weight: bold;
+  /*font-weight: bold;*/
   text-transform: uppercase;
 }
 #nav a:hover {
@@ -334,7 +366,7 @@ small a {
 }
 
 #header {
-  margin: 40px 0px 40px 0px;
+  margin: 40px 0px 30px 0px;
 }
 #header h1, #header h2 {
   margin: 0px;
@@ -343,6 +375,7 @@ small a {
 #header h1 {
   font-size: 36px;
   font-weight: bold;
+  color: #0d0d0d;
 }
 #header h2 {
   border-bottom-width: 0px;
@@ -350,6 +383,14 @@ small a {
   font-weight: normal;
   text-shadow: none;
   text-transform: none;
+}
+
+
+div.item div.header > h1 {
+    font-size: 18px;
+}
+div.item div.header > h2 {
+    font-size: 11px !important;
 }
 
 div.item + div.item div.header h1 {
