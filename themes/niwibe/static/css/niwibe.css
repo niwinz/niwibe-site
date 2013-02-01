@@ -51,13 +51,18 @@ a {
 }
 
 .page-title {
-    margin-bottom: 20px;
+    margin-bottom: 10px;
 }
+
 .page-title a {
     color: black;
     font-size: 32px;
     font-size: 1.75em;
     color: #332411;
+}
+
+.page-title a:hover {
+    text-decoration: none;
 }
 
 .home-articles ul {
@@ -91,6 +96,10 @@ a {
 
 .project-table tr td.name {
     width:185px;
+}
+
+.post-info {
+    font-size: 13px;
 }
 
 .tags a {

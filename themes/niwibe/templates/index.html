@@ -4,7 +4,7 @@
 <div class="container home-articles">
     <div class="row">
         <div class="span8 offset2">
-            <h3>Articles:</h3>
+            <h1>Articles:</h1>
             <ul class="articles">
                 {% for article in articles_page.object_list %}
                 <li><span class="date">{{ article.locale_date }}</span>
@@ -13,6 +13,20 @@
                 {% endfor %}
             </ul>
             {% include 'pagination.html' %}
+        </div>
+    </div>
+    <div class="row">
+        <div class="span8 offset2">
+            <h1>Projects:</h1>
+            <ul class="projects">
+                {% for name, link, desc in PROJECTS %}
+                <li><a href="{{ link }}">{{ name }}</a> - {{ desc }}</li>
+                {% endfor %}
+            </ul>
+
+            <br />
+
+            <p>And more others on my <a href="{{ GITHUB }}">Github</a>.</p>
         </div>
     </div>
 </div>

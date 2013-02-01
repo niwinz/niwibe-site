@@ -25,6 +25,8 @@ MENUITEMS = (
     ('videos', '/video-archives.html'),
 )
 
+GITHUB = 'https://github.com/niwibe'
+
 DISPLAY_PAGES_ON_MENU = True
 REVERSE_CATEGORY_ORDER = True
 
@@ -44,3 +46,28 @@ ARTICLE_SAVE_AS = '{date:%Y}/{date:%m}/{date:%d}/{slug}/index.html'
 
 #STATIC_PATHS = ["pictures", ]
 TEMPLATE_PAGES = {'pages/about.html': 'about.html'}
+
+PROJECTS = [
+    ('django-redis', 'https://github.com/niwibe/django-redis',
+        u'Full featured redis cache backend for Django.'),
+    ('django-jinja', 'https://github.com/niwibe/django-jinja',
+        u'Jinja2 templating language integrated in Django.'),
+    ('py-couchdb', 'https://github.com/niwibe/py-couchdb',
+        u'Modern pure python CouchDB Client.'),
+    ('wand', 'https://github.com/dahlia/wand',
+        u'The ctypes-based simple ImageMagick binding for Python'),
+    ('django-ext-pool', 'https://github.com/niwibe/djorm-ext-pool',
+        u'DB-API2 connection pool for Django'),
+    ('django-ext-pgarray', 'https://github.com/niwibe/djorm-ext-pgarray',
+        u'PostgreSQL native array fields extension for Django'),
+    ('django-ext-hstore', 'https://github.com/niwibe/djorm-ext-hstore',
+        u'PostgreSQL HStore module integraion for Django'),
+    ('py-mhash', 'https://github.com/niwibe/py-mhash',
+        'Mhash ctypes bindings for python3 and python2'),
+    ('moment-tokens', 'https://github.com/niwibe/moment-tokens',
+        u'Unix (strftime) and php format translations for momentjs'),
+    ('django-sse', 'https://github.com/niwibe/django-sse',
+        u'HTML5 Server-Sent Events integration for Django'),
+    ('sse', 'https://github.com/niwibe/sse',
+        'Server Sent Events protocol implemetation on python2/3'),
+]
