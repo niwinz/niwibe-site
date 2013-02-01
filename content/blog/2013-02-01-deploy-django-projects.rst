@@ -16,8 +16,8 @@ cloud (AWS por ejemplo) o un dedicado mas clasico.
 Heroku, dotCloud, cloudfoundry y parecidos tienen sus diferencias debido a que abstraen gran
 parte de lo que se va a explicar en este articulo.
 
-Gunicorn_, Supervisor_ y Nginx_ es el stack tecnologico usado mayoritariamente. Aveces hemos
-apostado por uwsgi y nos ha dado buen resultado, pero paso por una temporada de cambios que
+Gunicorn_, Supervisor_ y Nginx_ es el stack tecnologico usado mayoritariamente. Aveces he
+apostado por uwsgi y me ha dado buen resultado, pero paso por una temporada de cambios que
 afectaban grabemente la compatibilidad con FreeBSD y por ese motivo Gunicorn_ es la opcion
 por defecto.
 

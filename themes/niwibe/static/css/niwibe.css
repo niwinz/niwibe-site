@@ -108,6 +108,10 @@ p {
     font-size: 13px;
 }
 
+.post-info p {
+    margin: 0px;
+}
+
 .tags a {
     margin-left: 5px;
 }
