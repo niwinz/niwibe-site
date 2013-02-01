@@ -3,7 +3,7 @@
 {% block content %}
 <div class="container home-articles">
     <div class="row">
-        <div class="span8 offset2">
+        <div class="span10 offset1">
             <h1>Articles:</h1>
             <ul class="articles">
                 {% for article in articles_page.object_list %}
@@ -16,7 +16,7 @@
         </div>
     </div>
     <div class="row">
-        <div class="span8 offset2">
+        <div class="span10 offset1">
             <h1>Projects:</h1>
             <ul class="projects">
                 {% for name, link, desc in PROJECTS %}
