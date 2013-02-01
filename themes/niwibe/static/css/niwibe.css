@@ -50,6 +50,12 @@ a {
     text-decoration: none;
 }
 
+p {
+    margin: 0;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
 .page-title {
     margin-bottom: 10px;
 }
@@ -109,4 +115,16 @@ a {
 pre {
     font-size: 12px;
     line-height: 13px;
+}
+
+.note {
+    padding: 10px;
+    border: 1px solid #ddd;
+    background-color: #f8f8f8;
+}
+
+.note p.first {
+    margin: 0px;
+    padding: 0px;
+    font-weight: bold;
 }
