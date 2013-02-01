@@ -1,0 +1,103 @@
+@font-face {
+    font-family: "Calluna";
+    src: url("../Calluna-Regular.otf");
+}
+
+@font-face {
+    font-family: "Inconsolata";
+    src: url("../Inconsolata.otf");
+}
+
+body {
+    font-weight: normal;
+    color: #483318;
+    margin: 20px auto 0;
+    font-size: 16px;
+    line-height: 1.5em;
+    font-family: Calluna, Georgia, serif;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-weight: normal;
+    font-family: "Helvetica Neue", Helvetica, sans-serif;
+    font-family: Calluna, Georgia, serif;
+    color: #332411;
+    margin-top: 20px;
+}
+
+h1 {
+    font-size: 1.75em;
+}
+
+h2 {
+    font-size: 1.50em;
+}
+
+h3 {
+    font-size: 1.25em;
+}
+
+a:visited {
+    color: #441d7b;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+a {
+    color: #146894;
+    text-decoration: none;
+}
+
+.page-title {
+    margin-bottom: 20px;
+}
+.page-title a {
+    color: black;
+    font-size: 32px;
+    font-size: 1.75em;
+    color: #332411;
+}
+
+.home-articles ul {
+    list-style: none;
+    padding: 0px;
+    margin: 0px;
+}
+
+.paginator {
+    margin-top: 20px;
+}
+
+.article h1 {
+    font-family: Calluna, Georgia, serif;
+    color: #332411;
+    margin-bottom: .25em;
+}
+
+.article h1 > a {
+    color: #332411;
+}
+
+
+.comments {
+    margin-top: 20px;
+}
+
+.comments h2 {
+    font-size: 1.50em;
+}
+
+.project-table tr td.name {
+    width:185px;
+}
+
+.tags a {
+    margin-left: 5px;
+}
+
+pre {
+    font-size: 12px;
+    line-height: 13px;
+}

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>{% block title %}{{ SITENAME }}{%endblock%}</title>
+        <meta charset="utf-8" />
+        <link rel="stylesheet" href="{{ SITEURL }}/theme/css/bootstrap.min.css" type="text/css" />
+        <link rel="stylesheet" href="{{ SITEURL }}/theme/css/pygment.css" type="text/css" />
+        <link rel="stylesheet" href="{{ SITEURL }}/theme/css/niwibe.css" type="text/css" />
+        {% if FEED_ALL_ATOM %}
+        <link href="{{ FEED_DOMAIN }}/{{ FEED_ALL_ATOM }}" type="application/atom+xml" rel="alternate" title="{{ SITENAME }} Atom Feed" />
+        {% endif %}
+        {% if FEED_ALL_RSS %}
+        <link href="{{ FEED_DOMAIN }}/{{ FEED_ALL_RSS }}" type="application/rss+xml" rel="alternate" title="{{ SITENAME }} RSS Feed" />
+        {% endif %}
+    </head>
+    <body id="index" class="home">
+        {% include 'github.html' %}
+        {% block header %}
+        <div class="header container">
+            <div class="row">
+                <div class="offset2 span8">
+                    <div class="page-title">
+                        <a href="{{ SITEURL }}/">{{ SITENAME }}</a></a>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="span8 offset2">
+                    <p>I am a Python and Django hacker, C++ and JavaScript lower. I am specialized on full stack web development.</p>
+                    <p>To learn more, please go <a href="/about.html">here</a>.
+                </div>
+            </div>
+        </div>
+        {% endblock %}
+
+        {% block content %}
+        {% endblock %}
+
+        <div class="footer"></div>
+        {% include 'analytics.html' %}
+        {% include 'piwik.html' %}
+        {% include 'disqus_script.html' %}
+    </body>
+</html>

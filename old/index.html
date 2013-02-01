@@ -1,0 +1,16 @@
+{% extends 'layout.html' %}
+
+
+{% block content %}
+    <ul class="items">
+    {% for post in posts %}
+        {% if site.post_limit and loop.index > site.post_limit %}{% break %}{% endif %}
+        <li><span class="date">{{ post.date }}</a> <a href="{{ get_url(post.url) }}">{{ post.title }}</a></li>
+    {% endfor %}
+
+    {% if site.post_limit and posts|length > site.post_limit %}
+        <div class="pagination">
+            <p><a href="{{ get_url('archives/') }}">Read Older Posts</a></p>
+        </div>
+    {% endif %}
+{% endblock %}
