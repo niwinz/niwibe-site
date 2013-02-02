@@ -3,12 +3,15 @@ Vuelta de tuerca a los settings de django
 
 :tags: django
 
-Django, por defecto viene con un unico archivo de configuración: ``settings.py`` y  para empezar 
-no esta mal. De hecho, considero que el sistema de settings de django muy bueno y muy comodo. 
 
-El problema es que el "template" de un proyecto no esta preparado para cubrir a casos complejos, con 
-multiples entornos (preproducción, producción, etc). Otro problema es como evitar de una manera comoda
-no meter configuracion especifica/personalizada de cada usuario en el control de versiones.
+Django, por defecto viene con un unico archivo de configuración: ``settings.py`` y  para empezar
+no esta mal. De hecho, considero que el sistema de settings de django es muy bueno y muy comodo.
+
+Pero podemos detectar los siguientes problemas:
+
+* El "template" de un proyecto no esta preparado para cubrir casos complejos, con multiples entornos (preproducción, producción, etc).
+* Como evitar de una manera comoda no meter configuración especifica/personalizada de cada usuario en el control de versiones.
+* Como evitar duplicacion de estructuras de configuración y poder modificar configuracion y no solo sobreescribir.
 
 
 settings_local.py
@@ -29,16 +32,15 @@ Algo así como esto:
         pass
 
 
-
-En un principio, esta solución soluciona los problemas planteados. Evita que las configuracion especifica
-del usuario  no vaya al repo. Pero tiene un problema fundamental, no puedes extender o sobreescribir 
-certos atributos.
+En un principio, esta iteracion da solucion los varios problemas planteados. Evita que las configuración especifica
+del usuario  no vaya al repo. Pero tiene un problema fundamental, solo puedes sobreescribir configuración, pero no
+puedes hacer modificaciones pequeñas.
 
 Settings como package
 =====================
 
-Despues de varias iteraciones, buscando una organización flexible y modular de settings. He 
-llegado a la solucion que expondre con un ejemplo. A diferencia de lo anterior, en settings en este
+Despues de varias iteraciones, buscando una organización flexible y modular de settings. He
+llegado a la solución que expondre con un ejemplo. A diferencia de lo anterior, en settings en este
 caso pasa a ser un package de python, es decir un directorio.
 
 Esta es la estructura:
@@ -68,7 +70,7 @@ Este seria el contenido de ``__init__.py``:
         sys.exit(-1)
 
 
-- ``common.py`` contendría el contenido de ``settings.py`` estandar. 
+- ``common.py`` contendría el contenido de ``settings.py`` estandar.
 - ``development.py`` heredaría todo lo del ``common.py`` pero haria las modificaciones especifica para el entorno de desarrollo.
 - ``production.py`` tendria lo mismo que ``development.py`` pero para el entorno de producción.
 
@@ -88,18 +90,26 @@ Aqui los ejemplos del resto de ficheros:
     from .common import *
     DEBUG = False
 
+
 .. code-block:: python
-    
+
     # local.py.example
     from .development import *
 
 
 Con este sistema, por defecto obligamos al usuario crear un archivo **local.py** (que a su vez deberia
-estar ignorado en el repo).
+estar ignorado en el repo) y ese a su vez, puede heredar tanto de ``development.py`` o de ``production.py``,
+permitiendo, una manera flexible de tener settings locales fuera del repositorio y un sistema modular con
+"herencia" de settings, evitando la duplicación de los mismos.
+
+
+Si dado el caso en mi entorno preciso otros parametros de conexion a la base de datos, solo tendria que
+modificar mi local.py y añadirle lo siguiente:
+
+.. code-block:: python
 
     DATABASES['default']['NAME'] = 'somepersonaldbname'
     DATABASES['default']['HOST'] = '192.168.1.4'
 
-
-Y arrancariamos django así:
-
+Y estando con seguridad de que estos cambios nunca llegaran al repo por algun descuido y que solo estoy
+modificando una pequeña parte sin replicar toda la estructura de la configuración.

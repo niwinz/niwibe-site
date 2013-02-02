@@ -19,7 +19,7 @@ LINKS =  (('Pelican', 'http://docs.notmyidea.org/alexis/pelican/'),
 SOCIAL = (('You can add links in your config file', '#'),
           ('Another social link', '#'),)
 
-DEFAULT_PAGINATION = 40
+DEFAULT_PAGINATION = 12
 
 MENUITEMS = (
     ('videos', '/video-archives.html'),
