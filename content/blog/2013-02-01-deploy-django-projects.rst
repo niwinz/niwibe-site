@@ -42,9 +42,13 @@ Una aproximación: ``/home/fooproject/``. Así que, creamos el usuario:
 
 .. code-block:: console
 
-    useradd -g users -G wheel,nogroup -m fooproject
+    useradd -g users -G sudo,nogroup -m fooproject
     mkdir -p /home/fooproject/logs
 
+.. note::
+
+    En distribuciones que no son ubuntu u otros sistemas operativos tipo unix (bsd) lo mas probable
+    es que tengan el grupo **wheel** en vez del sudo.
 
 .. note::
 
@@ -190,7 +194,7 @@ Como es un supuesto caso en el que es el primer y unico virtualhost, lo colocamo
         }
 
         location /static {
-            alias /home/ubuntu/symposion/symposion_project/site_media;
+            alias /home/fooproject/fooproject/src/static;
             expires 30d;
         }
     }
@@ -198,3 +202,7 @@ Como es un supuesto caso en el que es el primer y unico virtualhost, lo colocamo
 
 Con esto ya tendríamos lo minimo para poder desplegar. Ahora, cada caso siempre tiene sus diferencias
 y hay que adaptar la configuración a las necesidades que se nos presenten.
+
+Enlaces de interes:
+
+* https://speakerdeck.com/helgi/nginx-and-php-match-made-in-heaven
