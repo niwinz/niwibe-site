@@ -7,7 +7,7 @@
             <h1>Articles:</h1>
             <ul class="articles">
                 {% for article in articles_page.object_list %}
-                <li><span class="date">{{ article.locale_date }}</span>
+                <li><span class="date">{{ article.locale_date }}</span> -
                     <a href="{{ SITEURL }}/{{ article.url }}">{{ article.title }}</a>
                 </li>
                 {% endfor %}

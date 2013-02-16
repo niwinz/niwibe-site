@@ -1,11 +1,24 @@
 @font-face {
-    font-family: "Calluna";
-    src: url("../Calluna-Regular.otf");
+    font-family: "Merriweather";
+    src: url("../Merriweather-Regular.otf");
 }
 
 @font-face {
     font-family: "Inconsolata";
     src: url("../Inconsolata.otf");
+}
+
+
+@font-face {
+    font-family: 'Merriweather';
+    src: url('../fonts/Merriweather-Light-webfont.eot');
+    src: url('../fonts/Merriweather-Light-webfont.eot?#iefix') format('embedded-opentype'),
+         url('../fonts/Merriweather-Light-webfont.woff') format('woff'),
+         url('../fonts/Merriweather-Light-webfont.ttf') format('truetype'),
+         url('../fonts/Merriweather-Light-webfont.svg#MerriweatherLight') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
 }
 
 body {
@@ -14,15 +27,21 @@ body {
     margin: 20px auto 0;
     font-size: 16px;
     line-height: 1.5em;
-    font-family: Calluna, Georgia, serif;
+    font-family: Merriweather, Georgia, serif;
+    font: 17px/25px 'Merriweather', serif;
+    font-weight: 300;
 }
 
 h1, h2, h3, h4, h5, h6 {
     font-weight: normal;
-    font-family: "Helvetica Neue", Helvetica, sans-serif;
-    font-family: Calluna, Georgia, serif;
-    color: #332411;
     margin-top: 20px;
+    font-family: 'Merriweather', serif;
+    font-weight: 300;
+    color: #222;
+}
+
+li {
+    line-height: 24px;
 }
 
 h1 {
@@ -82,7 +101,7 @@ p {
 }
 
 .article h1 {
-    font-family: Calluna, Georgia, serif;
+    font-family: Merriweather, Georgia, serif;
     color: #332411;
     margin-bottom: .25em;
 }
