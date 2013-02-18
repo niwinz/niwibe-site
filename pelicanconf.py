@@ -36,7 +36,6 @@ GOOGLE_ANALYTICS = u"UA-23352570-2"
 DISQUS_SITENAME = "niwibe"
 THEME = "themes/niwibe"
 
-
 FEED_ALL_RSS = 'feeds/all.rss.xml'
 CATEGORY_FEED_RSS = 'feeds/%s.rss.xml'
 FILENAME_METADATA = '(?P<date>\d{4}-\d{2}-\d{2})-(?P<slug>.+)'
