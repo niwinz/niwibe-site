@@ -8,11 +8,7 @@ from pelicanconf import *
 SITEURL = 'http://www.niwi.be'
 
 DELETE_OUTPUT_DIRECTORY = True
+RELATIVE_URLS = False
 
-# Following items are often useful when publishing
-
-# Uncomment following line for absolute URLs in production:
-#RELATIVE_URLS = False
-
-#DISQUS_SITENAME = ""
-#GOOGLE_ANALYTICS = ""
+GOOGLE_ANALYTICS = u"UA-23352570-2"
+DISQUS_SITENAME = "niwibe"

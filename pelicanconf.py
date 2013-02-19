@@ -32,8 +32,6 @@ REVERSE_CATEGORY_ORDER = True
 
 FILES_TO_COPY = (('extra/robots.txt', 'robots.txt'),)
 
-GOOGLE_ANALYTICS = u"UA-23352570-2"
-DISQUS_SITENAME = "niwibe"
 THEME = "themes/niwibe"
 
 FEED_ALL_RSS = 'feeds/all.rss.xml'
