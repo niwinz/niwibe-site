@@ -4,14 +4,14 @@ Index usage statistics in PostgreSQL
 :tags: postgresql
 
 This is a simple tip for obtain statistic information about indexes usage on a
-current database. This information is collected by a PostgreSQL Statistics Collector.
+current database. All information is obtained from some views exposed by PostgreSQL,
+and populated by the Statistics Collector.
 
-All information is obtained are from some views exposed by postgresql. I only expose some
-facility for obtain these information filtered by current database and exclude system
-indexes.
+Tips of this post only exposes some facility for obtain these information (filtered
+by current database and exclude system indexes).
 
-Helpers methods
----------------
+Helper sql functions
+--------------------
 
 Sql function that returns a table with I/O infomation (obtained from pg_statio_user_indexes view)
 and filtered by current database and "public" schema:
