@@ -32,9 +32,9 @@ Algo así como esto:
         pass
 
 
-En un principio, esta iteracion da solucion los varios problemas planteados. Evita que las configuración especifica
+En un principio, esta iteracion da solucion a uno de los problemas planteados: evita que las configuración especifica
 del usuario  no vaya al repo. Pero tiene un problema fundamental, solo puedes sobreescribir configuración, pero no
-puedes hacer modificaciones pequeñas.
+puedes hacer modificaciones pequeñas y parciales.
 
 Settings como package
 =====================
@@ -53,21 +53,21 @@ Esta es la estructura:
     ./fooproject/settings/production.py
     ./fooproject/settings/local.py.example
 
+**Nota:** Todos estos ficheros deberian estar gestionados por el control de versiones y solo y unicamente **local.py**
+debe ser ignorado, debido a que ahi es donde se colocaria la configuración personalizada de cada developer.
 
-Este seria el contenido de ``__init__.py``:
+Este sería el contenido de ``__init__.py``:
 
 .. code-block:: python
     # -*- coding: utf-8 -*-
 
-    from __future__ import absolute_import, print_function
+    from __future__ import absolute_import
     import os, sys
 
     try:
         from .local import *
     except ImportError:
-        print(u"«local.py» file does not exist.")
-        print(u"Go to settings directory and copy «local.py.example» to «local.py»")
-        sys.exit(-1)
+        pass
 
 
 - ``common.py`` contendría el contenido de ``settings.py`` estandar.
@@ -97,11 +97,9 @@ Aqui los ejemplos del resto de ficheros:
     from .development import *
 
 
-Con este sistema, por defecto obligamos al usuario crear un archivo **local.py** (que a su vez deberia
-estar ignorado en el repo) y ese a su vez, puede heredar tanto de ``development.py`` o de ``production.py``,
-permitiendo, una manera flexible de tener settings locales fuera del repositorio y un sistema modular con
-"herencia" de settings, evitando la duplicación de los mismos.
-
+Con este sistema, le damos la opcion al usuario de no tener que pasar el parametro --settings a todos
+los comandos de **manage.py** creando el fichero **local.py**. Con este fichero creado, y con lo que
+hemos puesto en el fichero **__init__.py** django podra cargar los settings.
 
 Si dado el caso en mi entorno preciso otros parametros de conexion a la base de datos, solo tendria que
 modificar mi local.py y añadirle lo siguiente:
@@ -113,3 +111,16 @@ modificar mi local.py y añadirle lo siguiente:
 
 Y estando con seguridad de que estos cambios nunca llegaran al repo por algun descuido y que solo estoy
 modificando una pequeña parte sin replicar toda la estructura de la configuración.
+
+Esto realmente es muy util para entornos de desarrollo. Luego, en produccion, no es algo incomodo
+pasar como parametro el settings que se va a usar, por lo que existe dos opciones, crear **local.py**
+o especificar el modulo de settings a usar mediante el parametro **--settings**.
+
+Con este sistema tenemos una manera flexible de tener settings locales fuera del repositorio y un sistema
+modular con "herencia" de settings, evitando la duplicación de los mismos.
+
+Ejemplo:
+
+.. code-block:: console
+
+    $ gunicorn_django --settings="projectname.settings.production" -w 3
