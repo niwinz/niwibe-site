@@ -20,10 +20,10 @@ As a first step, we need to accept a lot of http requests. So we have to adapt n
 system settings (linux) for their requirements.
 
 We know that each incoming socket is a file descriptor used. And by default a normal user has a limit of
-1024 file descriptors. To accept many requests, we need to modify this parameter on both: nginx and
-linux kernel.
+1024 file descriptors. To accept many requests, we need to modify this parameter on both: nginx config and
+linux kernel parameters.
 
-For modify the limit of fd for a users, your need modify ``/etc/security/limits.conf`` file, and add
+For modify the limit of fd's for a users, your need modify ``/etc/security/limits.conf`` file, and add
 these lines:
 
 .. code-block:: limits
@@ -41,8 +41,9 @@ these lines:
     #*          soft    nofile      256000
     #*          hard    nofile      260000
 
-In rare cases, the kernel has a hard limit for open files, and, if you put open file number hight of
-kernel hight limit, you need increase kernel limit midifying ``fs.file-max``.
+In rare cases, the kernel has a hard limit for open files vert low, and, if you put open file number
+hight of kernel hight limit on limits.conf, will no have any effect. In this case, you need increase kernel
+limit midifying ``fs.file-max``.
 
 On my system the kernel hard limit is very big and I have not worry about it.
 
@@ -65,25 +66,65 @@ number of connections:
 
     # /etc/nginx/nginx.conf
     user www-data;
+
+    # this number really depends of number
+    # of cpu/cores on your server
     worker_processes 4;
     pid /var/run/nginx.pid;
 
     events {
         worker_connections 4069;
+        use epoll;
     }
 
-    # [...]
+    http {
+        sendfile on;
+        tcp_nopush on;
+        tcp_nodelay on;
+
+        # Large values reduce performance
+        # for requests to wsgi server.
+        keepalive_timeout 15;
+        types_hash_max_size 2048;
+
+        # [...]
+    }
 
 
 Connection backlog
 ------------------
 
-Okay, We are able to have many open sockets, but your kernel has enough queue to accept them? By
-default, linux kernel has very small queue for connections.
+Okay, We are able to have many open sockets, but your kernel has enough queue size to accept them? By
+default, linux kernel has very small queue for connections:
 
 .. code-block:: console
 
     [5.0.2]root@niwi:~niwi# sysctl net.core.somaxconn
     net.core.somaxconn = 128
 
-For heavy load web server, this is a very bad configuration.
+For heavy load web server, this is a very bad configuration. 65536 is a possible good value for
+this kernel parameter.
+
+.. code-block:: sysctl
+
+    # sysctl.conf
+    net.core.somaxconn=65536
+
+    # other minor tuning
+    net.core.netdev_max_backlog=2500
+    net.ipv4.tcp_max_syn_backlog=2500
+    net.ipv4.tcp_keepalive_time=300
+
+Additionally, you can enlarge local port range:
+
+.. code-block:: sysctl
+
+    # sysctl.conf
+    net.ipv4.ip_local_port_range=1024 65535
+
+
+Related links
+-------------
+
+* http://itresident.com/nginx/nginx-and-php-fpm-for-heavy-load-wordpress-web-server-with-high-traffic-2000-concurrent-connections/
+* http://nichol.as/benchmark-of-python-web-servers
