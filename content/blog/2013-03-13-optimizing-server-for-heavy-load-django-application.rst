@@ -1,10 +1,7 @@
-Optimizing server for heavy load django application
-###################################################
+Optimizing server for heavy load wsgi application
+#################################################
 
 :tags: django, nginx, gunicorn
-
-A lot of time, I turn up
-
 
 Many times, we only care to optimize the database, nginx or WSGI server, and often is more than enough.
 But, when you have a web application that must be able to scale and support over 2000 concurrent users,
@@ -12,6 +9,7 @@ this is totally insufficient.
 
 Here comes the part where we have to optimize the operating system, such as kernel parameters for TCP/IP
 stack, and more.
+
 
 File descriptor limit
 ---------------------
