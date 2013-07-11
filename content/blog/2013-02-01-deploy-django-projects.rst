@@ -90,16 +90,21 @@ Modificamos la primera sección del fichero para que quede de esta manera:
     chmod=0770
     chown=nobody:nogroup
 
+    # [...]
+
+    [include]
+    files = /etc/supervisor/conf.d/*.ini
+
 Basicamente con esto, permitimos que los usuarios puedan controlar los procesos arrancados con supervisord
 sin tener que logarse como root ni usar sudo.
 
-Y como ultimo paso, creamos un fichero ``fooproject.conf`` dentro del directorio ``/etc/supervisor/conf.d/``.
+Y como ultimo paso, creamos un fichero ``fooproject.ini`` dentro del directorio ``/etc/supervisor/conf.d/``.
 Este seria una aproximación a lo que solemos usar:
 
 .. code-block:: ini
 
     [program:django]
-    command=/home/fooproject/.virtualenvs/fooproject/bin/gunicorn -w 3 -t 60 fooproject.wsgi
+    command=/home/fooproject/.virtualenvs/fooproject/bin/gunicorn_django -w 3 -t 60 --settings=fooproject.settings --pythonpath=.
     directory=/home/fooproject/fooproject/src/
     numprocs=1
     autostart=true
@@ -187,7 +192,7 @@ Como es un supuesto caso en el que es el primer y unico virtualhost, lo colocamo
             proxy_set_header Host $http_host;
             proxy_set_header X-Real-IP $remote_addr;
             proxy_set_header X-Scheme $scheme;
-            proxy_set_header X-Forwarded-Protocol $scheme;
+            proxy_set_header X-Forwarded-Proto $scheme;
             proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
             proxy_pass http://127.0.0.1:8000/;
             proxy_redirect off;
