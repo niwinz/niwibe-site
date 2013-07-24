@@ -1,4 +1,4 @@
-Title: Refernecias rvalue de C++11 e introducción a std::move y std::forward.
+Title: Refernecias rvalue de C++11 e introducción a move y forward.
 Tags: cpp, cpp11
 
 Es algo abitual en programación usar parametros por referencia, en c++ las que habia hasta ahora son las que se llaman las referencias lvalue, y en C++11 se han introducido un tipo nuevo de referencias, las que llaman rvalue.
