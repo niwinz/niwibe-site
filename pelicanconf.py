@@ -3,7 +3,7 @@
 
 AUTHOR = u'Andrey Antukh'
 SITENAME = u'Niwi.Be'
-SITEURL = 'http://www.niwi.be'
+SITEURL = ''
 
 TIMEZONE = 'Europe/Paris'
 
@@ -19,7 +19,7 @@ LINKS =  (('Pelican', 'http://docs.notmyidea.org/alexis/pelican/'),
 SOCIAL = (('You can add links in your config file', '#'),
           ('Another social link', '#'),)
 
-DEFAULT_PAGINATION = 12
+DEFAULT_PAGINATION = 20
 
 MENUITEMS = (
     ('videos', '/video-archives.html'),
@@ -30,7 +30,13 @@ GITHUB = 'https://github.com/niwibe'
 DISPLAY_PAGES_ON_MENU = True
 REVERSE_CATEGORY_ORDER = True
 
-FILES_TO_COPY = (('extra/robots.txt', 'robots.txt'),)
+STATIC_PATHS = [
+    'extra/robots.txt',
+]
+
+EXTRA_PATH_METADATA = {
+    'extra/robots.txt': {'path': 'robots.txt'},
+}
 
 THEME = "themes/niwibe"
 

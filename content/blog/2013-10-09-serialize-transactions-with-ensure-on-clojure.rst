@@ -5,9 +5,9 @@ Serialize transaction (clojure stm) using ensure
 
 When I looked real examples for ensure_ function, I have not found much information and I decided to investigate.
 
-Clojure STM as default behavior, when one transaccion is abborted, try retry commit again a transaction. But some times
+Clojure STM as default behavior, when one transaccion is abborted, retry a transaction many times. But some times
 we need directly blocks other concurrent access to same data (like traditional locks, but with little difference that it
-blocks only if you modify a ensured **ref** insted of block unconditionally).
+blocks only if you modify a ensured **ref** insted of all block unconditionally).
 
 This is a simple example of how changing some ref in one transaction blocks while other transaction ensure's it:
 

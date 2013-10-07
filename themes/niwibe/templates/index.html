@@ -15,21 +15,21 @@
             {% include 'pagination.html' %}
         </div>
     </div>
-    {% if not articles_page.has_previous() %}
-    <div class="row">
-        <div class="span10 offset1">
-            <h1>Projects:</h1>
-            <ul class="projects">
-                {% for name, link, desc in PROJECTS %}
-                <li><a href="{{ link }}">{{ name }}</a> - {{ desc }}</li>
-                {% endfor %}
-            </ul>
+    {# {% if not articles_page.has_previous() %} #}
+    {# <div class="row"> #}
+    {#     <div class="span10 offset1"> #}
+    {#         <h1>Projects:</h1> #}
+    {#         <ul class="projects"> #}
+    {#             {% for name, link, desc in PROJECTS %} #}
+    {#             <li><a href="{{ link }}">{{ name }}</a> - {{ desc }}</li> #}
+    {#             {% endfor %} #}
+    {#         </ul> #}
 
-            <br />
+    {#         <br /> #}
 
-            <p>And more others on my <a href="{{ GITHUB }}">Github</a>.</p>
-        </div>
-    </div>
-    {% endif %}
+    {#         <p>And more others on my <a href="{{ GITHUB }}">Github</a>.</p> #}
+    {#     </div> #}
+    {# </div> #}
+    {# {% endif %} #}
 </div>
 {% endblock content %}
