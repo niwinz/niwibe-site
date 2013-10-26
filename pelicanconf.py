@@ -32,6 +32,7 @@ REVERSE_CATEGORY_ORDER = True
 
 STATIC_PATHS = [
     'extra/robots.txt',
+    'files',
 ]
 
 EXTRA_PATH_METADATA = {
@@ -39,6 +40,7 @@ EXTRA_PATH_METADATA = {
 }
 
 THEME = "themes/niwibe"
+LOCALE = "en"
 
 FEED_ALL_RSS = 'feeds/all.rss.xml'
 CATEGORY_FEED_RSS = 'feeds/%s.rss.xml'
