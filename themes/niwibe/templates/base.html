@@ -1,8 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
-        <title>{% block title %}{{ SITENAME }}{%endblock%}</title>
         <meta charset="utf-8" />
+        <title>{% block title %}{{ SITENAME }}{%endblock%}</title>
+        {% block html_headers %}
+        {% endblock %}
         <link rel="stylesheet" href="{{ SITEURL }}/theme/css/bootstrap.min.css" type="text/css" />
         <link rel="stylesheet" href="{{ SITEURL }}/theme/css/pygment.css" type="text/css" />
         <link rel="stylesheet" href="{{ SITEURL }}/theme/css/niwibe.css" type="text/css" />

@@ -3,6 +3,16 @@
 
 {% block header %}{% endblock %}
 
+{% macro render_tags(tags) -%}
+    {%- for tag in tags -%}
+        {{ tag }}{%- if not loop.last %}, {% endif %}
+    {%- endfor -%}
+{%- endmacro %}
+
+{% block html_headers %}
+        <meta name="keywords" content="{{ render_tags(article.tags) }}" />
+{% endblock %}
+
 {% block content %}
 <div class="container">
     <div class="row">
