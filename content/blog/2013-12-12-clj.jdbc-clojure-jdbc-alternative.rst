@@ -1,0 +1,83 @@
+clj.jdbc - JDBC for Clojure
+###########################
+
+:tags: clojure, jdbc
+
+This is a young library what intends be a real alternative to the current clojure contrib
+library: clojure.java.jdbc.
+
+Why? The answer to this querstion can be simple. The first reason for existente
+of clj.jdbc is thar a original library has a very unintuitive api and documentation is
+realy unexistent. It have other reasons that can be read on the `FAQ page. <http://cljjdbc.readthedocs.org/en/latest/faq.html#why-another-jdbc-wrapper>`_
+
+This is a little list of **clj.jdbc** project goals:
+
+- Explicit is better than implicit.
+- Readability counts.
+- Should be concise and intuitive for humans.
+- Well documented.
+- Open to contributions.
+- More permisive license.
+
+
+Gettings started making a query
+-------------------------------
+
+The simplest way to see how it works, is seeing a one basic example. In this case, we
+go to create a connection and execute a query.
+
+.. code-block:: clojure
+
+    (require '[jdbc :refer [with-connection query]])
+
+    (def dbspec {:classname "org.postgresql.Driver"
+                 :subprotocol "postgresql"
+                 :subname "//localhost:5432/dbname"
+                 :user "username"
+                 :password "password"})
+
+    (with-connection dbspec conn
+      (let [result (query conn "SELECT 1 + 1 as foo;")]
+        (println result)))
+
+    ;; -> [{:foo 2}]
+
+
+**with-connection** is a helper idiomatic macro that hides a real implementation and resource
+management, but if you want more control over resource management, you can use **make-connection**
+function instead:
+
+.. code-block:: clojure
+
+    (require '[jdbc :refer [make-connection query]])
+
+    (with-open [conn (make-connection spec)]
+      (let [result (query conn "SELECT 1 + 1 as foo;")]
+        (println result)))
+
+
+Similar code using a clojure.java.jdbc (proposed by the author of clojure.java.jdbc on
+the clojure mailing list):
+
+.. code-block:: clojure
+
+    (require '[clojure.java.jdbc :as jdbc])
+
+    (def dbspec {:classname "org.postgresql.Driver"
+                 :subprotocol "postgresql"
+                 :subname "//localhost:5432/dbname"
+                 :user "username"
+                 :password "password"})
+
+    (with-open [con (jdbc/get-connection db-spec)]
+      (let [connected  (jdbc/add-connection db-spec con)
+            result     (jdbc/query connected ["SELECT 1 + 1 as foo;"])]
+        (println result)))
+
+
+**clj.jdbc** is mainly designed for be used by humans with more clear and intuitive
+api than clojure.java.jdbc.
+
+You can read more about all features and more examples on
+`project documentation page <http://cljjdbc.readthedocs.org/en/latest/>`_  and
+access to source code on `Github <https://github.com/niwibe/clj.jdbc>`_.
