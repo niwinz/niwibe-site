@@ -1,42 +1,73 @@
 @font-face {
-    font-family: "Merriweather";
-    src: url("../Merriweather-Regular.otf");
-}
-
-@font-face {
-    font-family: "Inconsolata";
-    src: url("../Inconsolata.otf");
-}
-
-
-@font-face {
-    font-family: 'Merriweather';
-    src: url('../fonts/Merriweather-Light-webfont.eot');
-    src: url('../fonts/Merriweather-Light-webfont.eot?#iefix') format('embedded-opentype'),
-         url('../fonts/Merriweather-Light-webfont.woff') format('woff'),
-         url('../fonts/Merriweather-Light-webfont.ttf') format('truetype'),
-         url('../fonts/Merriweather-Light-webfont.svg#MerriweatherLight') format('svg');
+    font-family: 'roboto_condensedlight';
+    src: url('../fonts/RobotoCondensed-Light-webfont.eot');
+    src: url('../fonts/RobotoCondensed-Light-webfont.eot?#iefix') format('embedded-opentype'),
+         url('../fonts/RobotoCondensed-Light-webfont.woff') format('woff'),
+         url('../fonts/RobotoCondensed-Light-webfont.ttf') format('truetype'),
+         url('../fonts/RobotoCondensed-Light-webfont.svg#roboto_condensedlight') format('svg');
     font-weight: normal;
     font-style: normal;
-
 }
 
-body {
+@font-face {
+    font-family: 'robotoregular';
+    src: url('../fonts/Roboto-Regular-webfont.eot');
+    src: url('../fonts/Roboto-Regular-webfont.eot?#iefix') format('embedded-opentype'),
+         url('../fonts/Roboto-Regular-webfont.woff') format('woff'),
+         url('../fonts/Roboto-Regular-webfont.ttf') format('truetype'),
+         url('../fonts/Roboto-Regular-webfont.svg#robotoregular') format('svg');
     font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'robotolight';
+    src: url('../fonts/Roboto-Light-webfont.eot');
+    src: url('../fonts/Roboto-Light-webfont.eot?#iefix') format('embedded-opentype'),
+         url('../fonts/Roboto-Light-webfont.woff') format('woff'),
+         url('../fonts/Roboto-Light-webfont.ttf') format('truetype'),
+         url('../fonts/Roboto-Light-webfont.svg#robotolight') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+
+@font-face {
+    font-family: 'robotobold';
+    src: url('../fonts/Roboto-Bold-webfont.eot');
+    src: url('../fonts/Roboto-Bold-webfont.eot?#iefix') format('embedded-opentype'),
+         url('../fonts/Roboto-Bold-webfont.woff') format('woff'),
+         url('../fonts/Roboto-Bold-webfont.ttf') format('truetype'),
+         url('../fonts/Roboto-Bold-webfont.svg#robotobold') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'anonymous_proregular';
+    src: url('../fonts/anonymous_pro-webfont.eot');
+    src: url('../fonts/anonymous_pro-webfont.eot?#iefix') format('embedded-opentype'),
+         url('../fonts/anonymous_pro-webfont.woff') format('woff'),
+         url('../fonts/anonymous_pro-webfont.ttf') format('truetype'),
+         url('../fonts/anonymous_pro-webfont.svg#anonymous_proregular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+
+body {
+    font-family: "robotolight", serif;
+    font-size: 16px;
+    font-weight: 300;
+    line-height: 25px;
     color: #483318;
     margin: 20px auto 0;
-    font-size: 16px;
-    line-height: 1.5em;
-    font-family: Merriweather, Georgia, serif;
-    font: 17px/25px 'Merriweather', serif;
-    font-weight: 300;
 }
 
 h1, h2, h3, h4, h5, h6 {
-    font-weight: normal;
-    margin-top: 20px;
-    font-family: 'Merriweather', serif;
+    font-family: 'roboto_condensedlight', serif;
     font-weight: 300;
+    margin-top: 20px;
     color: #222;
 }
 
@@ -75,14 +106,16 @@ p {
     margin-bottom: 10px;
 }
 
+strong, b {
+    font-family: "robotobold";
+}
+
 .page-title {
     margin-bottom: 10px;
 }
 
 .page-title a {
-    color: black;
-    font-size: 32px;
-    font-size: 1.75em;
+    font-size: 28px;
     color: #332411;
 }
 
@@ -101,7 +134,7 @@ p {
 }
 
 .article h1 {
-    font-family: Merriweather, Georgia, serif;
+    font-family: "roboto_condensedlight", serif;
     color: #332411;
     margin-bottom: .25em;
 }
@@ -147,8 +180,9 @@ table.docutils td {
 }
 
 pre {
-    font-size: 12px;
-    line-height: 13px;
+    font-size: 14px;
+    line-height: 16px;
+    font-family: "anonymous_proregular";
 }
 
 .note {
@@ -161,4 +195,12 @@ pre {
     margin: 0px;
     padding: 0px;
     font-weight: bold;
+}
+.paginator a {
+    font-family: "robotobold";
+    color: #666;
+}
+
+.paginator span {
+    color: #888;
 }

@@ -1,0 +1,13 @@
+{% if DEFAULT_PAGINATION %}
+<p class="paginator">
+    <span>
+        <a href="{{ SITEURL }}/{{ articles_previous_page.url }}">prev</a>
+    </span>
+    <span>
+    page {{ articles_page.number }} of {{ articles_paginator.num_pages }}
+    </span>
+    <span>
+        <a href="{{ SITEURL }}/{{ articles_next_page.url }}">next</a>
+    </span>
+</p>
+{% endif %}
