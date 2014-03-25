@@ -6,7 +6,7 @@
         {% block html_headers %}
         {% endblock %}
         <link rel="stylesheet" href="{{ SITEURL }}/theme/css/bootstrap.min.css" type="text/css" />
-        <link rel="stylesheet" href="{{ SITEURL }}/theme/css/pygment.css" type="text/css" />
+        <link rel="stylesheet" href="{{ SITEURL }}/theme/css/github.css" type="text/css" />
         <link rel="stylesheet" href="{{ SITEURL }}/theme/css/niwibe.css" type="text/css" />
         {% if FEED_ALL_ATOM %}
         <link href="{{ FEED_DOMAIN }}/{{ FEED_ALL_ATOM }}" type="application/atom+xml" rel="alternate" title="{{ SITENAME }} Atom Feed" />
@@ -22,11 +22,13 @@
             <div class="row">
                 <div class="span10 offset1">
                     <div class="page-title">
-                        <a href="{{ SITEURL }}/">Andrey Antukh / {{ SITENAME }}</a></a>
+                        <a href="{{ SITEURL }}/">{{ SITENAME }}</a></a>
                     </div>
+                    <p>Hi, I'm <a href="/about.html">Andrey Antukh</a>, a programmer at 
+                        <a href="http://kaleidos.net">Kaleidos</a>. I enjoy Clojure, Python
+                        and other languages.</p>
 
-                    <p>Python hacker, C++ / JavaScript lover and Clojure enthusiast.</p>
-                    <p>To learn more, please go <a href="/about.html">here</a>.
+                    <p>I am a Russian citizen who lives in Madrid and speaks Catalonian ;)</p>
                 </div>
             </div>
         </div>
