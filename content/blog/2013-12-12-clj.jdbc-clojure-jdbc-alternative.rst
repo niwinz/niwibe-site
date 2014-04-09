@@ -8,7 +8,7 @@ library: clojure.java.jdbc.
 
 Why? The answer to this querstion can be simple. The first reason for existente
 of clj.jdbc is thar a original library has a very unintuitive api and documentation is
-realy unexistent. It have other reasons that can be read on the `FAQ page. <http://cljjdbc.readthedocs.org/en/latest/faq.html#why-another-jdbc-wrapper>`_
+realy unexistent. It have other reasons that can be read on the `FAQ page. <http://niwibe.github.io/clj.jdbc/#_why_another_jdbc_wrapper>`_
 
 This is a little list of **clj.jdbc** project goals:
 
@@ -79,5 +79,5 @@ the clojure mailing list):
 api than clojure.java.jdbc.
 
 You can read more about all features and more examples on
-`project documentation page <http://cljjdbc.readthedocs.org/en/latest/>`_  and
+`project documentation page <http://niwibe.github.io/clj.jdbc/>`_  and
 access to source code on `Github <https://github.com/niwibe/clj.jdbc>`_.
