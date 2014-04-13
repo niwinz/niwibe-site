@@ -45,7 +45,7 @@ This is a working example of implementing these protocols for json support:
 
     ;; ISQLResultSetReadColumn handles the conversion from sql types
     ;; to user types. In this case, we are extending PGobject for handle
-    ;; json field conversions.
+    ;; json field conversions to clojure hash-map.
     (extend-protocol types/ISQLResultSetReadColumn
       PGobject
       (from-sql-type [pgobj conn metadata i]
