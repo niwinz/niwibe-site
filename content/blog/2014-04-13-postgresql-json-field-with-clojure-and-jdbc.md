@@ -7,7 +7,7 @@ and jdbc?
 It is very simple!
 
 **clj.jdbc** exposes some protocols (`jdbc.types/ISQLType` and `jdbc.types/ISQLResultSetReadColumn`)
-to extend user types making them compatible with jdbc and in backwardly.
+to extend user types making them compatible with jdbc in both directions.
 
 The first handles conversion from user type to jdbc compatible type and the second handles the
 backward process (from sql/jdbc type to user type).
