@@ -6,12 +6,12 @@ Transaction strategy with Clojure JDBC
 In previous article, I have introduced a new jdbc library for clojure. On this article I want
 introduce one of the new features that it have.
 
-clj.jdbc comes with powerful tranasaction management, in comparison with clojure.java.jdbc it,
+clojure.jdbc comes with powerful tranasaction management, in comparison with clojure.java.jdbc it,
 by default, handles well subtransactions. All transaction block works as an atomic unit. But in
 some cases, a uses wants relaxe this transaction management such as all nested transactions
 are grouped into the first/main transaction.
 
-Thanks to the new feauture, introduced in the last version of clj.jdbc (0.1.0-beta4) you can
+Thanks to the new feauture, introduced in the last version of clojure.jdbc (0.1.0-beta4) you can
 change a transaction strategy without change any other code of your application.
 
 For show one example, we go to imitate a simple transaction management available in
@@ -69,7 +69,7 @@ And this is a simple example of how you can use one of previously defined strate
 
     ;; Simple macro usage
 
-    (with-connection dbspec conn
+    (with-connection [conn dbspec]
       (with-transaction-strategy conn (DummyTransactionStrategy.)
         (do-some-thing conn)))
 
@@ -81,4 +81,4 @@ And this is a simple example of how you can use one of previously defined strate
 
 
 You can read more about it on the `project documentation <http://cljjdbc.readthedocs.org/en/latest/>`_
-or view a source code on `Github <https://github.com/niwibe/clj.jdbc>`_.
+or view a source code on `Github <https://github.com/niwibe/clojure.jdbc>`_.
