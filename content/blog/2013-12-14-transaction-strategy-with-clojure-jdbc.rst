@@ -80,5 +80,5 @@ And this is a simple example of how you can use one of previously defined strate
       (do-some-thing conn))
 
 
-You can read more about it on the `project documentation <http://cljjdbc.readthedocs.org/en/latest/>`_
+You can read more about it on the `project documentation <http://niwibe.github.io/clojure.jdbc/>`_
 or view a source code on `Github <https://github.com/niwibe/clojure.jdbc>`_.
