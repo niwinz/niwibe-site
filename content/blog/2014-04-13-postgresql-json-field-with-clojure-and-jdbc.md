@@ -6,7 +6,7 @@ and jdbc?
 
 It is very simple!
 
-**clj.jdbc** exposes some protocols (`jdbc.types/ISQLType` and `jdbc.types/ISQLResultSetReadColumn`)
+**clojure.jdbc** exposes some protocols (`jdbc.types/ISQLType` and `jdbc.types/ISQLResultSetReadColumn`)
 to extend user types making them compatible with jdbc in both directions.
 
 The first handles conversion from user type to jdbc compatible type and the second handles the
@@ -79,5 +79,5 @@ This is a little example:
 
 This is a list of libraries used for this examples:
 
-- <https://github.com/niwibe/clj.jdbc>
+- <https://github.com/niwibe/clojure.jdbc>
 - <https://github.com/dakrone/cheshire>

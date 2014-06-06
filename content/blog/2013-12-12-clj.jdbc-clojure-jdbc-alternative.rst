@@ -7,10 +7,10 @@ This is a young library what intends be a real alternative to the current clojur
 library: clojure.java.jdbc.
 
 Why? The answer to this querstion can be simple. The first reason for existente
-of clj.jdbc is thar a original library has a very unintuitive api and documentation is
-realy unexistent. It have other reasons that can be read on the `FAQ page. <http://niwibe.github.io/clj.jdbc/#_why_another_jdbc_wrapper>`_
+of clojure.jdbc is thar a original library has a very unintuitive api and documentation is
+realy unexistent. It have other reasons that can be read on the `FAQ page. <http://niwibe.github.io/clojure.jdbc/#_why_another_jdbc_wrapper>`_
 
-This is a little list of **clj.jdbc** project goals:
+This is a little list of **clojure.jdbc** project goals:
 
 - Explicit is better than implicit.
 - Readability counts.
@@ -75,9 +75,9 @@ the clojure mailing list):
         (println result)))
 
 
-**clj.jdbc** is mainly designed for be used by humans with more clear and intuitive
+**clojure.jdbc** is mainly designed for be used by humans with more clear and intuitive
 api than clojure.java.jdbc.
 
 You can read more about all features and more examples on
-`project documentation page <http://niwibe.github.io/clj.jdbc/>`_  and
-access to source code on `Github <https://github.com/niwibe/clj.jdbc>`_.
+`project documentation page <http://niwibe.github.io/clojure.jdbc/>`_  and
+access to source code on `Github <https://github.com/niwibe/clojure.jdbc>`_.
