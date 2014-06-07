@@ -1,5 +1,6 @@
 Title: Stateless Authentication with api rest.
 Tags: authentication, api, rest, clojure, python
+Status: draft
 
 When we talk about authentication for api rest, almost everyone think about oauth1 or oauth2 and
 their variants defined by service providers. Also, exists other authentication system, such
