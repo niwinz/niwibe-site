@@ -6,12 +6,13 @@ When we talk about authentication for api rest, almost everyone think about oaut
 their variants defined by service providers. Also, exists other authentication system, such
 as: token, openid, etc..., but them are not widely used in comparison with oauth.
 
-That do you thing about all them? Are all them really stateless?
+That do you thing about all them? Are all them truly stateless?
 
 
 ## How authentication works?
 
-Before continue, I want explain how standard (http session) works and compare it to oauth.
+Before continue, I want to explain how standard (http session) works and compare it to oauth2.
+
 
 ### Basic steps on how standard http session authentication works:
 
@@ -40,13 +41,12 @@ This is a very superficial overview of oauth2 steps, but if you want know more a
 
 ## They are truly stateless?
 
-Now, having viewed the comparison, you can view that oauth not differs much from standard
+Now, having viewed the comparison, you can view that oauth2 not differs much from standard
 http session authentication. The big difference is that token is sended in an other header.
 If you are thinking that any of previously mentioned authentication are stateless, you are wrong.
 
 Stateless means without state, but as we having viewed, http session, oauth, etc... have
-small state: the token storage. Obviously is not a bad solution, but they mantain state, so that
-are not stateless and has huge disadvantages:
+small state: the token storage. Obviously is not a bad solution, but it has several disadvantages:
 
 - requires shared storage if you want scale the number of your servers.
 - with hundreds of thousands clients, you are forced to maintain hundreds of thousands tokens.
@@ -57,17 +57,17 @@ are not stateless and has huge disadvantages:
 ## What is stateless authentication?
 
 Stateless means without state. But, how we can identify a user from token without having any state
-on server? In fact, very easy! Simplifying: send all the data to the client.
+on server? In fact, very easy! Simplifying, send all the data to the client.
 
-So what would you store (send to client/network)? The most trivial example is an access token.
-Access tokens usually have a unique ID, they have an expiration date and they store the ID of the client
+So what would you store/send (send to client/network)? The most trivial example is an access token.
+Access tokens usually have a unique ID, an expiration date and the ID of the client
 that created it. To store this, you would just put this data into a JSON object, base64 encode it.
 
 Now having self contained token, you will need to make sure that nobody can manipulate the data. For this
 you should simple sign it using [MAC algotithm](http://en.wikipedia.org/wiki/Message_authentication_code) or
 any other digital signature methods.
 
-This has huge advantages:
+This approach has huge advantages:
 
 - the biggest one is that your storage is unbounded, because you actually don't store anything.
 - an application that forgets about it's access token will just no longer remember it and the data
@@ -104,14 +104,16 @@ situations I have come to have this kind of comments:
 
 _"I don't trust it, because it send data to the client"_
 
-Really, if you not trust this approach, you are not trust heavy used MAC algorithms in almost all
-security software on the world. Seems you are fear of change.
+If you do not trust the purposed approach, you are not trust the heavy used mac algorithms (that are used
+in almost all security software). This affirmation is unfounded.
 
 _It's vulnerable to main-in-the-middle attack_
 
-Yes, it is. As any other mentioned authentication system here. If any one capture your
-standard http session id, it may steal your identity. If you are not trust the purposed approach,
-you can not trust the most widely used authentication system.
+Yes, it is. As any other mentioned authentication system here.
+
+The most standard way of authentication is also vulnerable to that attack. For prevent it you should
+use ssl connections. This affirmation is also unfounded, because the purposed approach has the same
+security flaws as the rest of authentication systems.
 
 
 ## Summary
