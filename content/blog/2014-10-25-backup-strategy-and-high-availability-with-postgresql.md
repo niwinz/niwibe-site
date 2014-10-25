@@ -88,7 +88,7 @@ This assumes that replication connectons will be made from local. Replication co
 Let start making a first complete standalone backup:
 
 ```text
-pg_basebackup -D backupdir -U postgres -P -x -c fast -R
+pg_basebackup -D backupdir -U postgres -P -x -c fast
 ```
 
 After executing that command, you should have in *backupdir* a complete santandalone backup.
@@ -97,11 +97,52 @@ You should keep all archived wal files that are created after backup. If somethi
 you are forced to restore backup, you should follow the next steps:
 
 - Restore the last base backup.
-- Modify the recovery.conf file and add proper **restore_command** option (with something like: `'cp /mnt/archivedir/%f %p'` as value)
+- Add the recovery.conf file and add proper **restore_command** option (with something like: `'cp /mnt/archivedir/%f %p'` as value)
 - Start the server.
 
 When server going up, it will try apply all wal files found in the archive, making as a result the
 completelly restored server.
 
 
+## High Avalability ##
 
+For guaranty the minimum time of downtime you should can restore a database server in very little time. And if you have database with huge amount of data, restoring a backup can be very slow. Obviously it depends on the backup method but it's usually slow.
+
+For solve it you have different solutions:
+
+- Log shipping and Standby servers using wal file archives.
+- Log shipping and Standby server using asynchronous streaming replication.
+- Log shipping and Standby server using synchronous streaming replication.
+
+In this article, only asynchronous and synchronous streaming replication will be covered.
+
+### Asynchronous Replication ###
+
+Let start configuring the master server. Make sure that these parameters are set in **postgresql.conf**:
+
+```text
+listen_addresses = '*'
+wal_level = archive
+max_wal_senders = 24
+wal_keep_segments = 16
+```
+
+Archiving is not mandatory for this case, but is very recommended.
+
+This also requires the replication entry in **pg_hba.conf** file but in this case with an
+other entry allowing connections from outside the database server:
+
+```text
+local replication postgres trust
+host replication postgres 192.168.1.0/24 trust
+```
+
+In this example, we are using **trust** for make things easy, but in production is strongly recomended setup proper authentication.
+
+Now having the server configured, follow the same step for make a base backup, but from an other server and and additional parameter:
+
+```text
+pg_basebackup -D backupdir -U postgres -P -x -c fast -R
+```
+
+After this, start the server.
