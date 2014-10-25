@@ -49,3 +49,59 @@ But in detail this has more advantatges:
 - It allows make complete backups less frecuently.
 - It allows use easy filesystem snapshots (zfs).
 
+Backups using "Continuous wal archiving" needs two things to be done:
+
+- Initial standalone backup (using **pg_basebackup**)
+- All WAL files created after backup.
+
+As first step for making it working, is change the postgresql configuration.
+
+Set this options in your **postgresql.conf**:
+
+```text
+wal_level = archive
+max_wal_senders = 24
+wal_keep_segments = 16
+
+archive_mode = on
+archive_command = 'test ! -f /mnt/archivedir/%f && cp %p /mnt/server/%f'
+```
+
+That means each option:
+
+- *wal_level* specifies the level for wal file creation. If you want archive them, you should put **archve** or **hot_standby**
+- *max_wal_senders* specifies to how much replication connections is allowed (mainly used by **pg_basebackup**)
+- *wal_keep_segments* specifies the minimum number of past log file segments kept in the pg_xlog directory.
+- *archive_mode* activates the archive mode
+- *archive_command* specifies a command for execute for archive one wal file.
+
+Is strongly recommended archive wal files in different phisical disk and using commands that can guaranty the atomicity. A great example of bad command is using **scp**, beacuse it is not atomic.
+
+The second step is allow replication connections, for it, you should enable them in **pg_hba.conf** file:
+
+```text
+local replication postgres trust
+```
+
+This assumes that replication connectons will be made from local. Replication connections in this case are used mainly by **pg_basebackup** tool.
+
+Let start making a first complete standalone backup:
+
+```text
+pg_basebackup -D backupdir -U postgres -P -x -c fast -R
+```
+
+After executing that command, you should have in *backupdir* a complete santandalone backup.
+
+You should keep all archived wal files that are created after backup. If something happens, and
+you are forced to restore backup, you should follow the next steps:
+
+- Restore the last base backup.
+- Modify the recovery.conf file and add proper **restore_command** option (with something like: `'cp /mnt/archivedir/%f %p'` as value)
+- Start the server.
+
+When server going up, it will try apply all wal files found in the archive, making as a result the
+completelly restored server.
+
+
+
