@@ -6,6 +6,8 @@ SITENAME = u'Niwi.Be'
 SITEURL = ''
 TIMEZONE = 'UTC'
 
+PATH = 'content'
+
 DEFAULT_PAGINATION = 20
 USE_FOLDER_AS_CATEGORY = True
 
@@ -14,6 +16,7 @@ RELATIVE_URLS = True
 
 THEME = "themes/niwibe"
 LOCALE = ["en_US"]
+
 DEFAULT_LANG = "en_US"
 
 FEED_ALL_RSS = 'feeds/all.rss.xml'
