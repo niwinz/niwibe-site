@@ -81,6 +81,12 @@ ul.sub-menu, ul.children { margin:0px 10px 0px 0px; }
     text-overflow: ellipsis;
 }
 
+.entry time {
+    font-size: 12px;
+    font-style: italic;
+    color: #888
+}
+
 .entry h2, h3, h4, h5 { margin:30px 0px 10px 0px; }
 .entry img { display:block; border:1px solid #BDBDBD !important; }
 .entry img.wp-smiley { border:0px !important; }
