@@ -1,0 +1,155 @@
+/**
+ * Theme Name: niwibe
+ * Derived from:
+ * Author: Vinicius Massuchetto
+ * License: GNU General Public License v2.0
+ * License URI: http://www.gnu.org/licenses/gpl-2.0.html
+ */
+
+@import url("pygment-light.css");
+@import url(http://fonts.googleapis.com/css?family=Anonymous+Pro:700,400);
+/* @import url(http://fonts.googleapis.com/css?family=Lato:light,regular); */
+@import url(http://fonts.googleapis.com/css?family=Ubuntu:300,400,500);
+body {
+    margin:0px;
+    padding:20px 0px;
+    text-align:center;
+    font-family: "Ubuntu",  "Lato", "Anonymous Pro", Monospace;
+    font-weight: 300;
+    color:#585858;
+}
+
+a, a:visited { text-decoration:none; color:rgb(17, 170, 34); }
+/* a:hover { color:#FFF; background-color:#5353CB } */
+h1, h2, h3, h4, h5, h6, h7 { margin:0px; text-transform:uppercase; }
+h4, h5, h6 { font-size:14px; }
+h1 { padding:0px 0px 15px; margin:0px 0px 15px 0px; }
+blockquote { font-style:italic; background:#EAEAEA; margin:20px; padding:5px 10px; }
+blockquote cite { display:block; padding:10px 20px 0 0; text-align:right; }
+input, textarea { padding:5px; border:1px solid #8A8A8A; background:#EAEAEA; }
+input:hover, textarea:hover, blockquote:hover { background:#E5E5E5; }
+
+#wrap {
+    margin:0px auto;
+    text-align:left;
+    font-size: 13px;
+    line-height: 1.4;
+    max-width:960px;
+}
+
+#container { padding: 10px; }
+
+ul.sub-menu, ul.children { margin:0px 10px 0px 0px; }
+
+.post { margin:0px 0px 30px 0px; padding:0px 0px 30px 0px; border-bottom:1px dotted #C8C8C8; }
+.post-edit-link { clear:both; }
+.meta { margin:10px; padding:15px; background:#EAEAEA; clear:both; }
+.meta span { display:block; clear:left; }
+.thumbnail { margin:0px; padding:0px; }
+.thumbnail img { float:right; }
+
+#intro a > h1 {
+    color:#585858;
+}
+
+#intro h1 {
+    font-size: 2em;
+}
+
+#article-list span.article-date {
+    display: inline-block;
+    min-width: 65px;
+    font-size: 11px;
+    color: #999;
+}
+
+#article-list > ol {
+    list-style: none;
+    padding-left: 0px;
+}
+
+/* .entry { font-size: 14px; line-height: 20px; } */
+.entry {
+    font-size: 18px;
+    line-height: 24px;
+    word-wrap: break-word;
+}
+
+.truncate {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.entry h2, h3, h4, h5 { margin:30px 0px 10px 0px; }
+.entry img { display:block; border:1px solid #BDBDBD !important; }
+.entry img.wp-smiley { border:0px !important; }
+.entry a img:hover { background-color:transparent; border:1px solid #E5E5E5 !important; }
+.entry .aligncenter, div.aligncenter {	margin:10px auto; }
+.entry .alignleft { float: left; margin:10px 15px 10px 0px; }
+.entry .alignright { float: right; margin:10px 0px 10px 15px; }
+.entry .alignnone { margin:10px 0px; }
+.entry .gallery, .wp-caption { text-align:center; background:#EAEAEA; margin:10px; padding:10px; border:0px; max-width:520px; height:auto; }
+.entry .wp-caption img { border:0 none; margin:0px auto; padding:0; max-width:500px; height:auto; }
+.entry .gallery:hover, .wp-caption:hover { background:#E5E5E5; }
+.entry .gallery-caption, .wp-caption-text { background:transparent; }
+.entry .wp-caption p.wp-caption-text { font-size:11px; line-height:17px; margin:5px 50px 0px; }
+.entry .gallery-icon { width:100%; height:auto; }
+.entry .gallery-icon img { margin:0px auto; }
+.entry .gallery-caption { margin:5px 10px 0px 0px; padding:0px; }
+.entry p.attachment img { margin:0px auto; }
+.sticky { border-bottom:3px dotted #C8C8C8; }
+
+.wp_syntax { padding:5px 0px; }
+.wp_syntax pre { line-height:1.3; }
+.wp_syntax pre.php { line-height:1; }
+
+.highlight code,
+.highlight pre {
+    background-color: #f8f8f8;
+    padding: 15px;
+    font-family: "Anonymous Pro", Monospace;
+    font-size: 16px;
+}
+
+.widget_recent_entries ul li,
+.widget_recent_comments ul li,
+.widget_rss ul li { margin:10px 0px; padding:10px 0px; border-top:1px dotted #C8C8C8; }
+
+.related { margin:20px 0px 0px 0px; }
+.nav { margin:30px 0px; text-align:center; }
+
+#comments { border-top:1px dotted #C8C8C8; margin:30px 0px 0px 0px; padding:30px 0px 0px 0px; }
+.commentlist li { list-style-type:none; padding:10px; margin:20px 0px 0px 0px; }
+.commentlist li.even { background:#EAEAEA; }
+.commentlist li.odd { background:#D6D6D6; }
+.comment-author img { float:left; margin:0px 10px 10px 0px; }
+ul.commentlist ul.children { padding-left:10px; }
+ul.commentlist ul.children li { list-style-type:none; border:1px solid #AAA }
+.form-section { margin:10px 0px; text-align:right; }
+.form-section div { display:inline; }
+.bypostauthor { border:3px dotted #C8C8C8; }
+.form-allowed-tags { display:none; }
+
+#respond { margin:30px 0px 0px 0px; background:#FFF; border:1px solid #9A9A9A; margin:30px 0 0; padding:20px; }
+#commentform p { text-align:right; }
+#commentform input { width:50%; height:auto; margin:0px 0px 0px 10px; }
+#commentform .required { font-weight:bold; }
+#commentform textarea { width:95%; height:auto; margin:10px 0px 0px 0px; }
+#commentform .comment-form-comment { margin-bottom:5px; text-align:right; }
+#commentform .form-allowed-tags { color:#8A8A8A; margin-top:0px; font-size:10px; }
+
+input#submit { font-weight:bold; }
+input#s { width:70%; height:auto; margin:5px 0px; }
+
+#footer { text-align:center; clear:both; }
+#footer div { margin:30px 0px 0px 0px; padding:30px 0px 0px 0px; border-top:1px dotted #C8C8C8; }
+#footer li { list-style-type:none; }
+#footer .widget_tag_cloud h2 { display:none; }
+
+/* LWM EDITS */
+#page-title{
+    position : relative;
+    top : 8px;
+    line-height: 36px;
+}

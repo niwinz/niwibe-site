@@ -1,18 +1,30 @@
 {% extends "base.html" %}
 {% block content_title %}{% endblock %}
 {% block content %}
-<div class="container home-articles">
-    <div class="row">
-        <div class="span10 offset1">
-            <h1>Blog</h1>
-            <ul class="articles">
-                {% for article in articles_page.object_list %}
-                <li><a href="{{ SITEURL }}/{{ article.url }}">{{ article.title }}</a>
-                    <span class="date">{{ article.locale_date }}</span></li>
-                {% endfor %}
-            </ul>
-            {% include 'pagination.html' %}
-        </div>
-    </div>
-</div>
+  <section id="intro">
+    <a href="{{ SITEURL }}/">
+      <h1>{{ SITENAME }}</h1>
+    </a>
+    <p>Hi, I'm <a href="/about.html">Andrey Antukh</a>, a programmer at 
+      <a href="http://kaleidos.net">Kaleidos</a>. I enjoy Clojure, Python
+      and other languages.
+    </p>
+    <p>I am a Russian citizen who lives in Madrid and speaks Catalonian ;)</p>
+  </section>
+
+  <section id="article-list">
+    {% if articles %}
+      <h2>All posts</h2>
+      <ol>
+        {% for article in articles %}
+          <li class="truncate">
+            <span class="article-date">{{ article.date|strftime('%d %b %Y') }}</span>
+            <a href="{{ SITEURL }}/{{ article.url }}" rel="bookmark" title="Permalink to {{ article.title}}">{{ article.title }}</a>
+          </li>
+        {% endfor %}
+      </ol>
+    {% else %}
+      No posts found.
+    {% endif %}
+  </section>
 {% endblock content %}
