@@ -1,5 +1,5 @@
-clj.jdbc - JDBC for Clojure
-###########################
+clojure.jdbc - JDBC for Clojure
+###############################
 
 :tags: clojure, jdbc
 
@@ -8,7 +8,7 @@ library: clojure.java.jdbc.
 
 Why? The answer to this querstion can be simple. The first reason for existente
 of clojure.jdbc is thar a original library has a very unintuitive api and documentation is
-realy unexistent. It have other reasons that can be read on the `FAQ page. <http://niwibe.github.io/clojure.jdbc/#_why_another_jdbc_wrapper>`_
+realy unexistent. You can read other reasons on the `FAQ page. <http://niwibe.github.io/clojure.jdbc/#_why_another_jdbc_wrapper>`_
 
 This is a little list of **clojure.jdbc** project goals:
 
@@ -28,7 +28,7 @@ go to create a connection and execute a query.
 
 .. code-block:: clojure
 
-    (require '[jdbc :refer [with-connection query]])
+    (require '[jdbc.core :refer [with-connection query]])
 
     (def dbspec {:classname "org.postgresql.Driver"
                  :subprotocol "postgresql"
@@ -49,7 +49,7 @@ function instead:
 
 .. code-block:: clojure
 
-    (require '[jdbc :refer [make-connection query]])
+    (require '[jdbc.core :refer [make-connection query]])
 
     (with-open [conn (make-connection spec)]
       (let [result (query conn "SELECT 1 + 1 as foo;")]
