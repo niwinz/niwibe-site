@@ -1,5 +1,6 @@
 Title: Backup strategies and High Availability with PostgreSQL
 Tags: postgresql, backup, high-availability
+Status: draft
 
 The first step for high availability is have good backup strategy.
 
