@@ -116,6 +116,13 @@ ul.sub-menu, ul.children { margin:0px 10px 0px 0px; }
     padding: 15px;
     font-family: "Anonymous Pro", Monospace;
     font-size: 16px;
+    line-height: 18px;
+}
+
+code {
+    font-family: "Anonymous Pro", Monospace;
+    font-size: 18px;
+    font-weight: bold;
 }
 
 .widget_recent_entries ul li,
