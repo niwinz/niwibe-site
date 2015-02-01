@@ -1,8 +1,8 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*- #
 
-AUTHOR = u'Andrey Antukh'
-SITENAME = u'Niwi.Be'
+AUTHOR = 'Andrey Antukh'
+SITENAME = 'Niwi.Be'
 SITEURL = ''
 TIMEZONE = 'UTC'
 
