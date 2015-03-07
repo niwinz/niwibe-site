@@ -117,7 +117,7 @@ ul.sub-menu, ul.children { margin:0px 10px 0px 0px; }
     font-family: "Anonymous Pro", Monospace;
     font-size: 16px;
     line-height: 18px;
-    overflow-x: scroll;
+    overflow-x: auto;
     word-wrap: normal;
 }
 
