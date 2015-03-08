@@ -182,7 +182,7 @@ And here, the same example using above syntax sugar:
 
 A little summary:
 
-- If your language allows construct a expesive way to handle, this may be the most expressive one.
+- If your language allows construct am expesive way to handle, this may be the most expressive one.
 - This approach not uses bad practices and not uses the goto.
 - Unexpressive languages like golang tends to be completely unnecessary more verbose.
 
