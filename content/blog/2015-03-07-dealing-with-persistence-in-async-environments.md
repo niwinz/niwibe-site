@@ -12,11 +12,9 @@ block 1 of 200 threads and block 1 of 4 threads (as example).
 In case of persistence and concretelly jdbc, the api is totally blocking.
 
 The jdbc api is build with threaded environment in the mind. And very often I found people
-that thinking that some part of jdbc implementation is bound to the thread.
-
-But, the only thing that we shoult take care with jdbc and concurrency, is not using the same
-connection from different threads in the same time. That operation is not safe. *Jdbc interface
-is not thread safe*.
+that thinking that some part of jdbc implementation is bound to the thread. But, the only thing
+that we shoult take care with jdbc and concurrency, is not using the same connection from different
+threads in the same time. That operation is not safe.
 
 The approach for handling with blocking calls in async environments is having a separate group
 of workers (thread pool) for execute blocking calls, so allow to the main threads not block.
@@ -33,7 +31,7 @@ For implement the async support in _suricatta_, two main pieces are used: agents
 Agents and its internals provides a threadpool and serializable operations semantics, core.async
 provides an abstraction for avoid callbacks and the _exception_ monad for error handling.
 
-In _suricatta_, each connection maintains an agent as part of it internal state. This allows guarranty
+In _suricatta_, each connection maintains an agent as part of it internal state. This allows guarrantee
 that all async operations over one connections are done in serializable way. Obviously, different
 operations over one connection can be done in different threads (of clojure internal thread pool).
 That is completelly assumable, because the safe constrain is: not use the connection from different
@@ -55,8 +53,6 @@ Let's go to see an example:
       (println "Result:" @result))))
 ;; => "Result:" [{:x 1}]
 ```
-
-
 
 A _result_ is an instance of _exception_ monad (from [cats](https://github.com/funcool/cats) library),
 if you are not familiar with monads, you can treat it as container like any ref like type in clojure
