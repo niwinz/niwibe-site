@@ -8,7 +8,7 @@ to do it.
 ## Exceptions ##
 
 What is an _exception_? An exception is an event that occurs during the execution of a
-program that disrupts the normal flow of instructions
+program that disrupts the normal flow of instructions.
 
 Is the most common and accepted way to handling errors in popular and most used languages
 today is using Exceptions. _Exceptions_ as is is not a bad thing and it has great uses
@@ -38,8 +38,8 @@ def read_report_file(name:str, owner:User) -> Report:
 
 Having this code snippet, you can observe:
 
-- Using exceptions violation of the "Single Responsibility Principle". By definition,
-  any function using a try/catch is doing more that one thing at time: function
+- Using exceptions violates the "Single Responsibility Principle". By definition,
+  any function using a try/catch is doing more that one thing at time: domain
   logic and error handling.
 - That approach also violates the open/closed principle. If you want extend error
   handling, you should touch a function code that also has domain logic.
@@ -64,14 +64,14 @@ SoundCard soundCard = computer.getSoundCard()
 ```
 
 Having this code snippet in mind, we can see that `getSoundCard` operation has two possible
-states: return a sound card, or return "Nothing" in case of computed does not has a sound
-card.
+return values: sound card instance or some kind of "Nothing" (in case of computed does not
+has a sound card).
 
 For this situations, different languages has different approaches. There are languages that
 uses a `NULL` as value that represents "Nothing". Other languages has an special type commonly
 known as `Optional<T>`, and others directly does not have `NULL`.
 
-This is the way to do it in a classic way using java:
+Here an example using the classic approach using java:
 
 ```java
 String version = "UNKNOWN";
