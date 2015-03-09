@@ -4,11 +4,13 @@ Status: draft
 
 The *Expression problem* is a new name to an old problem.
 
-In my opinon, you probably do not care about it until kwnow it and kwnow how you can solve that
-situations (problems) with much better approaches using more expressive languages.
+In my opinon, you probably do not care about it until know it, And besides kwnow how
+you can solve that situations (problems) with much better approaches using more expressive
+languages.
 
-Instead try explain the problem defintion, let's go to see an concrete and real example and how we
+Instead of try explain the problem defintion, let's go to see a real example and how we
 can solve it in most expressive way.
+
 
 ## A little introduction ##
 
@@ -49,6 +51,7 @@ And there are our constraints:
 - We need interact in a simply way with the third party library.
 - We need a common abstraction for access in a "polymorphic way" to properties.
 - We can not change the source code, because is a third party library.
+
 
 ## Potential solutions ##
 
@@ -162,6 +165,7 @@ This approach also solves the problem, but in my opinion adds more problems that
 This technique is also known as "Monkey patching" and is well known that is not a good design pattern
 for your software.
 
+
 ### Traits ###
 
 This is very very similar to openclasses, the unique difference is that is more safe. Because
@@ -182,6 +186,7 @@ impl Animal for Dog {
     }
 }
 ```
+
 
 ### Static methods with conditionals ###
 
@@ -215,3 +220,24 @@ public class Utils {
   public static String getName(final Jid data) { /* implementation */ }
 }
 ```
+
+This approach solves the performance problem and add an other: it becones unpredictable
+in the face of complex inheritance hierarchies.
+
+
+## The clojure approach ##
+
+Clojure is designed and written in terms of abstractions and in difference with java or
+other popular languages, has different approach for work with abstractions. Like haskell (and maybe
+other funcional languages), it has clear separation between types (data), abstraction (protocol),
+and implementation.
+
+Let start with protocols.
+
+### Protocols ###
+
+*Protocols* are conceptually very similar to java "interfaces" but only supports the best
+parts of them. Them provides a high-performance, dynamic polymorphism construct with ability
+to extend type out of design time.
+
+This is a possible aspect of our abstraction represented using a clojure protocol:
