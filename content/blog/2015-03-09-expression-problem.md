@@ -71,7 +71,9 @@ public interface IUser {
 }
 ```
 
-But it is not an option because we need modify the source code of third party library.
+But it is not an option because we need modify the source code of third party library. Obviously
+we can create a subclass that extends the library types and implement the desired interface, but
+this not solves that the library stills returning own types and not your subtypes.
 
 
 ### Multiple inheritance ###
@@ -234,6 +236,7 @@ and implementation.
 
 Let start with protocols.
 
+
 ### Protocols ###
 
 *Protocols* are conceptually very similar to java "interfaces" but only supports the best
@@ -241,3 +244,11 @@ parts of them. Them provides a high-performance, dynamic polymorphism construct 
 to extend type out of design time.
 
 This is a possible aspect of our abstraction represented using a clojure protocol:
+
+```clojure
+(defprotocol IUser
+  "Common abstraction for access to user like objects."
+  (get-name [_] "Get user name.")
+  (get-bare [_] "Get bare representation of user")
+  (get-full [_] "Get full representation of user"))
+```
