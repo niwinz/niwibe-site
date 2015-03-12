@@ -2,7 +2,7 @@ Title: Dealing with persistence with jdbc in asynchronous environments (with clo
 Tags: clojure, persistence, jdbc
 
 Is well known that in async environments, nothing can be blocking. Asynchronous environments
-uses uses different approach for handling high concurrently: instead of using a "thread per connection"
+uses different approach for handling high concurrently: instead of using a "thread per connection"
 it uses a limited number of threads for handle thousands of connections, almost always with help
 with an event loop for handle IO.
 
@@ -16,7 +16,7 @@ that thinking that some part of jdbc implementation is bound to the thread using
 But, the only thing that we should take care with jdbc and concurrency, is that we should not use
 the same connection from different threads at same time. That operation is not safe.
 
-The good approach for handling with blocking calls in async environments is having a separate group
+The good approach for dealing with blocking calls in async environments is having a separate group
 of workers (thread pool) for execute them, allowing to the main threads stay not blocking.
 
 ## How I have done it in suricatta? ##
