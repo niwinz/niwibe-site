@@ -234,11 +234,6 @@ other popular languages, has different approach for work with abstractions. Like
 other funcional languages), it has clear separation between types (data), abstraction (protocol),
 and implementation.
 
-Let start with protocols.
-
-
-### Protocols ###
-
 *Protocols* are conceptually very similar to java "interfaces" but only supports the best
 parts of them. Them provides a high-performance, dynamic polymorphism construct with ability
 to extend type out of design time.
@@ -246,9 +241,52 @@ to extend type out of design time.
 This is a possible aspect of our abstraction represented using a clojure protocol:
 
 ```clojure
+(ns myapp.protocols)
+
 (defprotocol IUser
   "Common abstraction for access to user like objects."
   (get-name [_] "Get user name.")
   (get-bare [_] "Get bare representation of user")
   (get-full [_] "Get full representation of user"))
 ```
+
+The next step consists in add an implementation of this protocol for our
+hypothetical types. This can be done using `extend-type` function. Clojure also
+exposes other helpers but for our purposes `extend-type` fits perfectly.
+
+
+```clojure
+(ns myapp.core
+  (:require [myapp.protocols :as impl])
+  (:import somelib.roster.RosterItem
+           somelib.jid.Jid))
+
+(extend-type RosterItem
+  impl/IUser
+  (get-name [o] (.-name o))
+  (get-bare [o] (str (.-name o) "@" (.-domain o)))
+  (get-full [o] (str (.-name o) "@" (.-domain o))))
+
+(extend-type Jid
+  impl/IUser
+  (get-name [o] (.-local o))
+  (get-bare [o] (str (.-local o) "@" (.-domain o)))
+  (get-full [o] (str (.-local o) "@" (.-domain o) "/" (.-resource o))))
+```
+
+As I have said previously, protocols exposes a namespaced functions. This avoid completely the risk
+of name clashing if some other have implemented one method with same name. And the best part: no
+identity lose, you can work over your abstractions together with thrird party types without modifying
+them.
+
+```clojure
+(let [jid (Jid. "niwi" "niwi.be" "mypc")]
+  (println "Result: " (impl/get-bare jid)))
+
+(let [ritem (RosterItem. "niwi2" "niwi.be" :both)]
+  (println "Result: " (impl/get-bare ritem)))
+```
+
+Clojure offers very flexible polymorphic constructions that makes the code more expressive
+without additional accidental complexity. If protocols seems limited for you, let try use
+*multimethods*.
