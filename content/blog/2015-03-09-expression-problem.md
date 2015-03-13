@@ -4,13 +4,15 @@ Tags: clojure
 The *Expression problem* is a new name to an old problem.
 
 In my opinon, you probably do not care about it until know it. This article tries make a little
-and practical introduction to expression problem situations and explain how them can be solved
-with clojure protocols.
+and practical introduction to expression problem situations and explain how them can be elegantly
+solved using clojure polymorphic constructions. Concretely, protocols.
+
 
 ## A little introduction ##
 
-We are developing an xmpp client, using third party XMPP library for connect to xmpp server. XMPP
-has different entities, but for out example we will use that two: `RosterItem` and `Jid`.
+Let start with an hypotetical exercise: we are developing an xmpp client, using third party XMPP
+library for connect to xmpp server. XMPP has different entities, but for our example we will
+use this two: `RosterItem` and `Jid`.
 
 Here a little description of these two types:
 
