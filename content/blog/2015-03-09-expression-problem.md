@@ -3,13 +3,9 @@ Tags: clojure
 
 The *Expression problem* is a new name to an old problem.
 
-In my opinon, you probably do not care about it until know it, And besides kwnow how
-you can solve that situations (problems) with much better approaches using more expressive
-languages.
-
-Instead of try explain the problem defintion, let's go to see a real example and how we
-can solve it in most expressive way.
-
+In my opinon, you probably do not care about it until know it. This article tries make a little
+and practical introduction to expression problem situations and explain how them can be solved
+with clojure protocols.
 
 ## A little introduction ##
 
