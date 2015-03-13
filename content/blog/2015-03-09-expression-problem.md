@@ -1,6 +1,5 @@
 Title: The expression problem
 Tags: clojure
-Status: draft
 
 The *Expression problem* is a new name to an old problem.
 
