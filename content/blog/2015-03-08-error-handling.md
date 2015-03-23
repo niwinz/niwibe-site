@@ -64,8 +64,8 @@ SoundCard soundCard = computer.getSoundCard()
 ```
 
 Having this code snippet in mind, we can see that `getSoundCard` operation has two possible
-return values: sound card instance or some kind of "Nothing" (in case of computed does not
-has a sound card).
+return values: sound card instance or some kind of "Nothing" (in case of a computer that doesn't
+have a sound card).
 
 For this situations, different languages has different approaches. There are languages that
 uses a `NULL` as value that represents "Nothing". Other languages has an special type commonly
