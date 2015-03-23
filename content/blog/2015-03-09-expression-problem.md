@@ -126,7 +126,7 @@ But this solution has a huge number of inconveniences:
 
 - *It breaks the identity*. You can not use an instance of your roster item as parameter to the third
   party library that you are using for connect with XMPP. You should constanctly wrapping and
-  unwrapping, and this adds a lot of additional axidental complexity.
+  unwrapping, and this adds a lot of additional accidental complexity.
 - You can't compare a `MyJid` with `Jid` with `==` operator.
 - You can't use `Object.equals` because it should be symetric. If you want compate an MyJid instance
   with some other `Jid` instance, you should explicitly wrap the second one for make the compatation.
@@ -220,7 +220,7 @@ public class Utils {
 }
 ```
 
-This approach solves the performance problem and add an other: it becones unpredictable
+This approach solves the performance problem and add an other: it becomes unpredictable
 in the face of complex inheritance hierarchies.
 
 
@@ -232,7 +232,7 @@ other funcional languages), it has clear separation between types (data), abstra
 and implementation.
 
 *Protocols* are conceptually very similar to java "interfaces" but only supports the best
-parts of them. Them provides a high-performance, dynamic polymorphism construct with ability
+parts of them. They provides a high-performance, dynamic polymorphism construct with ability
 to extend type out of design time.
 
 This is a possible aspect of our abstraction represented using a clojure protocol:
