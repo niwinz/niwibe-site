@@ -13,7 +13,7 @@ Due to no existence of well established, documented and high performance promise
 clojurescript until today, I have written [promesa](https://github.com/funcool/promesa).
 
 The _promesa_ library uses the powerful and high performan [bluebird](https://github.com/petkaantonov/bluebird/) promise library for javascript for not reinvent the wheel and exposes an idiomatic and
-lighweight api for use from clojurescript.
+lighweight api for use it from clojurescript.
 
 ```clojure
 (-> (p/all [(do-some-async-job)
