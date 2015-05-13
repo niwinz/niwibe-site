@@ -10,8 +10,8 @@ env.deploy_path = 'output'
 DEPLOY_PATH = env.deploy_path
 
 # Remote server configuration
-production = 'niwi.be@leela:22'
-dest_path = '/home/niwi.be/website'
+production = 'niwi.nz@leela:22'
+dest_path = '/home/niwi.nz/website'
 
 # Rackspace Cloud Files configuration settings
 env.cloudfiles_username = 'my_rackspace_username'

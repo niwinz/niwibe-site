@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*- #
 
 AUTHOR = "Andrey Antukh"
-SITENAME = "Niwi.Be"
+SITENAME = "Niwi.Nz"
 SITEURL = ""
 TIMEZONE = "UTC"
 
@@ -11,7 +11,7 @@ PATH = "content"
 DEFAULT_PAGINATION = 20
 USE_FOLDER_AS_CATEGORY = True
 
-GITHUB = "https://github.com/niwibe"
+GITHUB = "https://github.com/niwinz"
 RELATIVE_URLS = True
 
 THEME = "themes/niwibe"
