@@ -7,14 +7,13 @@
  */
 
 @import url("pygment-light.css");
-@import url(//fonts.googleapis.com/css?family=Anonymous+Pro:700,400);
-@import url(//fonts.googleapis.com/css?family=Lato:light,regular,500);
-@import url(//fonts.googleapis.com/css?family=Ubuntu:300,400,500);
+@import url(//fonts.googleapis.com/css?family=Monoid:700,400);
+
 body {
     margin:0px;
     padding:20px 0px;
     text-align:center;
-    font-family: "Ubuntu",  "Lato", "Anonymous Pro", Monospace;
+    font-family: "Monoid", Monospace;
     font-weight: 300;
     color:#585858;
 }
@@ -75,7 +74,7 @@ ul.sub-menu, ul.children { margin:0px 10px 0px 0px; }
 /* .entry { font-size: 14px; line-height: 20px; } */
 .entry {
     font-size: 18px;
-    line-height: 24px;
+    line-height: 25px;
     word-wrap: break-word;
 }
 
@@ -116,17 +115,19 @@ ul.sub-menu, ul.children { margin:0px 10px 0px 0px; }
 
 .highlight code,
 .highlight pre {
-    background-color: #f8f8f8;
+    background-color: #fdfdfd;
+    border-left: 5px solid #f8f8f8;
+    /* border-right: 2px solid #f8f8f8; */
     padding: 15px;
-    font-family: "Anonymous Pro", Monospace;
-    font-size: 16px;
-    line-height: 18px;
+    font-family: "Monoid", Monospace;
+    font-size: 15px;
+    line-height: 22px;
     overflow-x: auto;
     word-wrap: normal;
 }
 
 code {
-    font-family: "Anonymous Pro", Monospace;
+    font-family: "Monoid", Monospace;
     font-size: 18px;
     font-weight: bold;
 }
@@ -170,5 +171,5 @@ input#s { width:70%; height:auto; margin:5px 0px; }
 #page-title{
     position : relative;
     top : 8px;
-    line-height: 36px;
+    line-height: 45px;
 }
