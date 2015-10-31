@@ -12,7 +12,7 @@ time for make it slower acordly to the current security standart. For example on
 the moment of write this article, 20000 is the recommeded iteration number for
 pbkdf2 and 12 for bcrypt.
 
-Choice a strong algorithm is important thing, but have a good upgrade password
+Choice a strong algorithm is important thing, but have a good update password
 hashes policy is also very important and usually completelly forgotten. The
 password generated 3 years ago is weaker that one generated today...
 
