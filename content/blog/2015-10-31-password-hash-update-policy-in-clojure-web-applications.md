@@ -38,7 +38,7 @@ passed the validation but it looks weaker the hook will be called; enabling a
 simple entry point for properly rehash the password and store it again in the
 database.
 
-In reallity, this is a very small and insignificant feature, but it makes the things
+In reality, this is a very small and insignificant feature, but it makes the things
 much easier for maintain the passwords of your application users updated with the
 stongest password hasher configuration.
 
