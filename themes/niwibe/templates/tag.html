@@ -1,2 +1,24 @@
 {% extends "index.html" %}
+{% block intro %}{% endblock intro %}
+
 {% block title %}{{ SITENAME }} - {{ tag }}{% endblock %}
+
+{% block content %}
+  <section id="article-list">
+    <a href="{{ SITEURL }}"><small>(return to home)</small></a>
+    {% if articles %}
+      <h2>Tag: {{ tag }}</h2>
+      <ol>
+        {% for article in articles %}
+          <li class="truncate">
+            <span class="article-date">{{ article.date|strftime('%d %b %Y') }}</span>
+            <a href="{{ SITEURL }}/{{ article.url }}" rel="bookmark" title="Permalink to {{ article.title}}">{{ article.title }}</a>
+          </li>
+        {% endfor %}
+      </ol>
+    {% else %}
+      No posts found.
+    {% endif %}
+  </section>
+
+{% endblock content %}

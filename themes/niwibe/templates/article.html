@@ -6,7 +6,23 @@
     <h1>
       <a href="{{ SITEURL }}/{{ article.url }}" id="page-title">{{ article.title }}</a>
     </h1>
-    {% if not HIDE_DATE %}<time datetime="{{ article.date.isoformat() }}">{{ article.locale_date }}</time>{% endif %}
+    <div class="article-meta">
+      {% if not HIDE_DATE %}
+        <small class="time">
+          Date:
+          <time datetime="{{ article.date.isoformat() }}">
+            {{ article.locale_date }}
+          </time>
+        </small>
+      {% endif %}
+      <br />
+      <small class="tags">
+        Tags:
+        {% for tag in article.tags %}
+          <a href="{{ SITEURL }}/{{ tag.url }}">{{ tag }}</a>
+        {% endfor %}
+      </small>
+    </div>
   </header>
   <article>
     <div id="article-content">
