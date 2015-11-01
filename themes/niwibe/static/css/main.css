@@ -7,13 +7,24 @@
  */
 
 @import url("pygment-light.css");
-@import url(//fonts.googleapis.com/css?family=Monoid:700,400);
+
+@font-face {
+    font-family: 'monoidregular';
+    src: url('/theme/fonts/monoid-regular-webfont.eot');
+    src: url('/theme/fonts/monoid-regular-webfont.eot?#iefix') format('embedded-opentype'),
+         url('/theme/fonts/monoid-regular-webfont.woff2') format('woff2'),
+         url('/theme/fonts/monoid-regular-webfont.woff') format('woff'),
+         url('/theme/fonts/monoid-regular-webfont.ttf') format('truetype'),
+         url('/theme/fonts/monoid-regular-webfont.svg#monoidregular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
 
 body {
     margin:0px;
     padding:20px 0px;
     text-align:center;
-    font-family: "Monoid", Monospace;
+    font-family: "monoidregular", "Monoid", Monospace;
     font-weight: 300;
     color:#585858;
 }
