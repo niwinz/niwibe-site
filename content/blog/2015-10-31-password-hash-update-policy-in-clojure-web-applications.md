@@ -3,7 +3,7 @@ Tags: clojure, security, auth
 
 Choice a strong password hasher for the modern web application is not very
 complicated thing. At this moment the two most used algorithms are [**pbkdf2**][2]
-and [**bcrypt**][3], so probably you should use one of them or any of its variants
+and [**bcrypt**][3], so probably you should use one of them or any of their variants
 such as **bcrypt+sha512** (buddy's default) or **pbkdf2+sha256**.
 
 The both algorithms works in a similar way: iterate the algoritm N times for make
@@ -12,9 +12,9 @@ time for make it slower acordly to the current security standart. For example on
 the moment of write this article, 20000 is the recommeded iteration number for
 pbkdf2 and 12 for bcrypt.
 
-Choice a strong algorithm is important thing, but have a good update password
-hashes policy is also very important and usually completelly forgotten. The
-password generated 3 years ago is weaker that one generated today...
+Choice a strong algorithm is important thing, but have a good update
+password-hashes policy is also very important and usually completelly forgotten.
+The password generated 3 years ago is weaker that one generated today...
 
 In recent work on [buddy-hashers][1] (version 0.8.0), this kind of problem can be
 easily solved in clojure applications using a special hook that will be called
