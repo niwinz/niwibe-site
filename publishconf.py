@@ -10,7 +10,7 @@ SITEURL = 'https://www.niwi.nz'
 
 FEED_ALL_ATOM = 'feeds/all.atom.xml'
 CATEGORY_FEED_ATOM = 'feeds/%s.atom.xml'
-
+DELETE_OUTPUT_DIRECTORY = True
 
 DELETE_OUTPUT_DIRECTORY = True
 RELATIVE_URLS = False

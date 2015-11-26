@@ -3,7 +3,8 @@
 
 AUTHOR = "Andrey Antukh"
 SITENAME = "Niwi.Nz"
-SITEURL = ""
+SITEURL = 'http://localhost:8000'
+
 TIMEZONE = "UTC"
 
 PATH = "content"
@@ -12,11 +13,10 @@ DEFAULT_PAGINATION = 20
 USE_FOLDER_AS_CATEGORY = True
 
 GITHUB = "https://github.com/niwinz"
-RELATIVE_URLS = True
+RELATIVE_URLS = False
 
 THEME = "themes/niwibe"
 LOCALE = ["en_US"]
-
 DEFAULT_LANG = "en_US"
 
 FEED_ALL_RSS = "feeds/all.rss.xml"

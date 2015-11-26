@@ -1,4 +1,12 @@
 {% extends "base.html" %}
+{% block extra_headers %}
+  <meta name="desciption" content="{{ article.content|striptags|escape|truncate(500) }}" /> 
+  {% if article.authors %}
+    <meta name="author" content="{{ article.authors[0] }}" />
+  {% endif %}
+{% endblock %}
+
+
 {% block title %}{{ super() }} : {{ article.title }}{% endblock %}
 {% block content %}
   <header>
@@ -19,7 +27,7 @@
       <small class="tags">
         Tags:
         {% for tag in article.tags %}
-          <a href="{{ SITEURL }}/{{ tag.url }}">{{ tag }}</a>
+          <a href="{{ SITEURL }}/{{ tag.url }}">{{ tag }}, </a>
         {% endfor %}
       </small>
     </div>
