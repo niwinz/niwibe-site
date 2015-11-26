@@ -1,27 +1,27 @@
-Title: A introduction to lenses and how to use them instead of cursors.
-Tags: clojurescript, state management, state, cursors
-Status: draft
+Title: Introduction to lenses and how to use them instead of cursors.
+Tags: clojurescript, state management, state, cursors, reactjs
 
-Today, one of the most popularized way to manage state in clojurescript web
-applications (mainly using any of the existing react wrappers) are cursors. Them
-allow pass a "controled" view of the state for avoid direct coupling of the
-application state with concrete compomponent.
+The cursors abstraction is so far the most used approach for delimit the vision
+of the global state for react components in ClojureScript applications. But that
+also has a great amount of downsides that should be considered before using it.
 
-But the **cursor** abstraction is inherently limited and the most important
-downsides for me are:
+Here is a little list of the most important for me:
 
 - Only works with plain data. That makes worse working with own types defined with
   **defrecord** and exploit polymorphism using **protocols**.
 - Only allows visions of the tree behind the current root node.
 
+All that downsides and surelly other that I have not mentioned here I think
+can be solved replacing cursors with lenses.
 
-### Introduction to Lenses ###
+
+### First steps with lenses ###
 
 Lenses are in fact the generalization of the get, put and data mapping to
 particular part of the data structure. The concept is very similar to the
 cursors but without the main limitation of them.
 
-For the following examples we will use the latest version of [cats][1] and
+The following examples we will use the latest version of [cats][1] and
 if you are in repl just evaluate the following require expression:
 
 ```clojure
@@ -36,8 +36,8 @@ Let se a simple example using lenses:
 ```
 
 The **fst** is a predefined lense that just get the first element of the data
-structure. Additionaly to simple focus, you can apply some operation in place
-or just put a new value into that position:
+structure. Additionaly to simple focus operation, you can apply some operation
+in place or just put a new value into that position:
 
 ```clojure
 (l/over l/fst inc [1 2 3])
@@ -47,9 +47,8 @@ or just put a new value into that position:
 ;; => [42 2 3]
 ```
 
-
-Also, you can focus some descendent nodes of the associative data structure in
-similar way as you are doing with cursors:
+Also, you can focus some descendent nodes of the associative data structure
+in a similar way as you are doing with cursors:
 
 ```clojure
 (l/focus (l/in [:a :b]) {:a {:b {:c 1 :d 2}}})
@@ -85,8 +84,7 @@ same way as [transducers][2] using **comp**:
 ;; => [[1 2 4 4] [5 6 7]]
 ```
 
-
-### Using lenses as cursors replacement ###
+### Lenses as cursors replacement ###
 
 The clojurescript applications usually uses a unique global state atom for store
 the entire app state and use cursors for provide a limited vision of the tree.
@@ -115,7 +113,7 @@ And then, let create a two different focused atoms from the state:
 ;; => #user.A{:v 2}
 ```
 
-The focused atom satisfies 100% the atom interface so you can use them like normal
+The focused atom satisfies the atom interface so you can use them like normal
 atoms. The main difference between them is that watchers are not triggered if
 focused value is not changed.
 
@@ -135,12 +133,10 @@ You can observe that you can focus also on portion of records and apply
 transformations over its values. This allows us have atom like visions of the
 global state without any limitations of cursors.
 
-
-### Conclusions ###
-
-I think that the **lens** abstraction is fully capable of replace the cursor
-abstraction and remove all of its limitations.
-
+If you want to see them in action, you can see the source code of my
+[playground project][3] using [rum][4] as react wrapper.
 
 [1]: https://github.com/funcool/cats
 [2]: http://clojure.org/transducers
+[3]: https://github.com/niwinz/rum-playground/tree/m1
+[4]: https://github.com/tonsky/rum
