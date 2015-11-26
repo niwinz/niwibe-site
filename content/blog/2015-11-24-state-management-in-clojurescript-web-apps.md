@@ -1,5 +1,6 @@
 Title: State management in ClojureScript web applications
 Tags: clojure, security, auth
+Status: draft
 
 If you are here, probaly you know about the new trending things like relay,
 falcor or om.next. In contrary to them, I'll try to explain my throughts about
