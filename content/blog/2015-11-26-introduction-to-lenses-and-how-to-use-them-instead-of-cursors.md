@@ -1,4 +1,4 @@
-Title: Introduction to lenses and how to use them instead of cursors.
+Title: Introduction to lenses and how to use them instead of cursors
 Tags: clojurescript, state management, state, cursors, reactjs
 
 The cursors abstraction is so far the most used approach for delimit the vision
