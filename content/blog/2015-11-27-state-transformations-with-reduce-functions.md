@@ -19,10 +19,10 @@ This can be the aspect of the multimethod declaration:
 
 The function receives a state as first argument and event object represented
 with a vector of two elements, first the event name and the second an optional
-parameters.
+parameters. That function can be used directly in `swap!`, that makes it
+really versatile.
 
-That function can be used directly in `swap!`, that makes it really
-versatile. Imagine to have defined this state transformations:
+Imagine to have defined this state transformations:
 
 ```clojure
 (defmethod state-transition :index-users
@@ -56,5 +56,5 @@ The state transitions also can be composed easily unsing **->** theading macro:
       (state-transition [:index-users users])))
 ```
 
-In fact, this is not a big revolutionary idea, is just a simple one that have worked
-in my case and that I hope you find it useful.
+In fact, this is not a big revolutionary idea, is just a simple one that have
+worked in my case and that I hope you find it useful.
