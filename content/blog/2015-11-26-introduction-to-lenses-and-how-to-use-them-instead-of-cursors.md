@@ -28,7 +28,7 @@ if you are in repl just evaluate the following require expression:
 (require '[cats.labs.lens :as l])
 ```
 
-Let se a simple example using lenses:
+Let see a simple example using lenses:
 
 ```clojure
 (l/focus l/fst [1 2 3])
