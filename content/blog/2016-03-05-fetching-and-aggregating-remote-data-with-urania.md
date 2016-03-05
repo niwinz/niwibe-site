@@ -75,7 +75,7 @@ We create and populate our only table: users.
 ;; => 0
 
 (sc/execute db
-            "INSERT INTO users (githubid) VALUES (dialelo');")
+            "INSERT INTO users (githubid) VALUES ('dialelo');")
 ;; => 1
 ```
 
@@ -108,13 +108,13 @@ promise and if its found it will simply resolve the promise with the user data:
   (-fetch [_ {:keys [db]}]
     (print! [:->user id])
     (prom/promise
-    (fn [resolve reject]
-      (if-let [usr (sc/fetch-one db
+      (fn [resolve reject]
+        (if-let [usr (sc/fetch-one db
                                  ["SELECT * from users where id = ?" id])]
-       (do
-         (print! [:<-user usr])
-         (resolve usr))
-       (reject (ex-info "User not found" {:id id})))))))
+         (do
+           (print! [:<-user usr])
+           (resolve usr))
+         (reject (ex-info "User not found" {:id id})))))))
 
 (defn user
   [id]
@@ -352,8 +352,8 @@ We now want to know the uppercased name of every GitHub organization a user belo
 (defn uppercased-github-org-names
   [id]
   (u/traverse (fn [org]
-              (uppercase (:login org)))
- 		(github-orgs-by-user-id id)))
+                (uppercase (:login org)))
+              (github-orgs-by-user-id id)))
 
 (u/run!! (uppercased-github-org-names 1)
          {:env {:db db, :http client}})
