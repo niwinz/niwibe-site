@@ -31,6 +31,14 @@
           </a>
         {% endfor %}
       </small>
+
+      <br />
+      <small class="tags">
+        Author:
+        {% for author in article.authors %}
+          <span>{{ author }}</span>{% if not loop.last %}, {% endif %}
+        {% endfor %}
+      </small>
     </div>
   </header>
   <article>
