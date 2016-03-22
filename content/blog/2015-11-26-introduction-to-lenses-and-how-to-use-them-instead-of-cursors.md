@@ -1,5 +1,5 @@
 Title: Introduction to lenses and how to use them instead of cursors
-Tags: clojurescript, state management, state, cursors, reactjs
+Tags: clojurescript, state, cursors, reactjs, lens
 
 The cursors abstraction is so far the most used approach for delimit the vision
 of the global state for react components in ClojureScript applications. But that
@@ -21,11 +21,11 @@ Lenses are in fact the generalization of the get, put and data mapping to
 particular part of the data structure. The concept is very similar to the
 cursors but without the main limitation of them.
 
-The following examples we will use the latest version of [cats][1] and
+The following examples we will use the latest version of [lentes][1] and
 if you are in repl just evaluate the following require expression:
 
 ```clojure
-(require '[cats.labs.lens :as l])
+(require '[lentes.core :as l])
 ```
 
 Let see a simple example using lenses:
@@ -70,7 +70,7 @@ Or just select some keys:
 ;; => {:c 3, :d 4, :a 2, :b 2}
 ```
 
-The most nice thing of the lenses implementation in [cats library][1] is that
+The most nice thing of the lenses implementation in [lentes][1] is that
 them are implemented just using plain functions and them can be composed in the
 same way as [transducers][2] using **comp**:
 
@@ -89,7 +89,7 @@ same way as [transducers][2] using **comp**:
 The clojurescript applications usually uses a unique global state atom for store
 the entire app state and use cursors for provide a limited vision of the tree.
 
-The [cats library][1] also comes with facilities to create a focused atoms with
+The [lentes library][1] also comes with facilities to create a focused atoms with
 lenses. Imagine you have this state:
 
 ```clojure
@@ -133,10 +133,5 @@ You can observe that you can focus also on portion of records and apply
 transformations over its values. This allows us have atom like visions of the
 global state without any limitations of cursors.
 
-If you want to see them in action, you can see the source code of my
-[playground project][3] using [rum][4] as react wrapper.
-
-[1]: https://github.com/funcool/cats
+[1]: https://github.com/funcool/lentes
 [2]: http://clojure.org/transducers
-[3]: https://github.com/niwinz/rum-playground/tree/m1
-[4]: https://github.com/tonsky/rum
