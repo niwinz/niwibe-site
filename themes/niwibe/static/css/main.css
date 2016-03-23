@@ -140,7 +140,7 @@ ul.sub-menu, ul.children { margin:0px 10px 0px 0px; }
 code {
     font-family: "Monoid", Monospace;
     font-size: 18px;
-    font-weight: bold;
+    color: black;
 }
 
 .widget_recent_entries ul li,
