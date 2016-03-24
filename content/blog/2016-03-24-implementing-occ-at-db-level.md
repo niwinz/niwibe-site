@@ -1,4 +1,4 @@
-Title: Implementing OCC (Optimisic Concurrency Control) on the database
+Title: Implementing OCC (Optimistic Concurrency Control) on the database
 Tags: postgresql, concurrency
 Author: Andrey Antukh
 
