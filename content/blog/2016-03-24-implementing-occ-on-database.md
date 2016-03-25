@@ -10,7 +10,7 @@ The `OCC` mechanism mainly consists in:
 
 - having an additional column called `version` by convention.
 - check if the incoming modification has the same version value.
-- increment that number on successfull modifications.
+- increment that number on successful modifications.
 
 This can be done at the application level, but that will imply at least
 an additional query for retrieve the row for match the version number.
@@ -71,8 +71,9 @@ the trigger function.
 
 And finally, you don't need any additional concurrency control such as
 using additional locks or more stronger isolation level for maintain
-consistensy. PostgreSQL by default acquires `ROW EXCLUSIVE` for `UPDATE`
-statements that already protects you from posible race condition.
+consistency. PostgreSQL by default acquires `ROW EXCLUSIVE` locks
+for each row in `UPDATE` statements that already protects you from
+possible race condition.
 
 
 [1]: https://en.wikipedia.org/wiki/Optimistic_concurrency_control
