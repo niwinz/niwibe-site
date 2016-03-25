@@ -69,4 +69,10 @@ At the application level you can catch and handle this kind of errors
 using the explicitly defined `ERRCODE` on the exception raised inside
 the trigger function.
 
+And finally, you don't need any additional concurrency control such as
+using additional locks or more stronger isolation level for maintain
+consistensy. PostgreSQL by default acquires `ROW EXCLUSIVE` for `UPDATE`
+statements that already protects you from posible race condition.
+
+
 [1]: https://en.wikipedia.org/wiki/Optimistic_concurrency_control
