@@ -1,12 +1,11 @@
 Title: Best practices storing time data on the database
 Tags: postgresql, time
 Author: Andrey Antukh
-Status: draft
 
 There is my personal list of best practices handling with time
-related data and its persistence. I assume they are for
-PostgreSQL in first time but that recommendations are
-almost the same for other databases:
+related data and its persistence. I assume they are for PostgreSQL
+in first time but that recommendations are almost the same for
+other databases:
 
 - Set your database timezone to `UTC` or at least set the connection
   timezone to `UTC` and persists datetimes always in `UTC`.
