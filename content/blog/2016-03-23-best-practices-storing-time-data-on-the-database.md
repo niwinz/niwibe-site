@@ -4,7 +4,7 @@ Author: Andrey Antukh
 Status: draft
 
 There is my personal list of best practices handling with time
-related data and its persistence. I assume them are for
+related data and its persistence. I assume they are for
 PostgreSQL in first time but that recommendations are
 almost the same for other databases:
 
@@ -48,7 +48,7 @@ test=# select * from foobar;
 
 So if you are storing datetimes without timezone, PostgreSQL will
 assume the current timezone of the database and this may not match
-with the user timezone; that in some ocasions can cause bugs showing
+with the user's timezone; that in some ocasions can cause bugs showing
 unexpected datetimes.
 
 Also, we can't rely on the postgresql connection timezone because
@@ -58,7 +58,7 @@ timezone in the database and leave to the application the
 responsability to convert datetimes to approriate timezone for
 presentation purposes only.
 
-For ensuere that the application logic always persists using UTC, we
+To ensure that the application logic always persists using UTC, we
 can force for certain fields that the inserted values should always
 come in UTC timezone. This can be done using the `CHECK` clause:
 
@@ -72,10 +72,10 @@ CREATE TABLE foobar (
 );
 ```
 
-This is not perfect solution but can you save from some bugs
+This is not a perfect solution but can you save from some bugs
 and in general is a very good practice.
 
-An other most common mistake is rely on the ORM defaults.
+Another most common mistake is rely on the ORM defaults.
 A great example is [Hibernate][1], that setup's the datetime
 columns without timezone in the default dialect.
 
