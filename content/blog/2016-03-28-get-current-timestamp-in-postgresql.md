@@ -42,7 +42,7 @@ test=# COMMIT;
 COMMIT
 ```
 
-Unexpected? This is happens because `now()` function always returns the transaction
+Surprised?? This is happens because `now()` function always returns the transaction
 timestamp and the first example works because the statements are executed in an
 implicit transaction if no explicit transaction is open.
 
