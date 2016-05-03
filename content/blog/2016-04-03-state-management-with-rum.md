@@ -165,9 +165,9 @@ applications.
 Pure state transformations are nice for show in examples, but real applications
 are full of side effects and asynchronous stuff.
 
-Before going deeper, let go to see an example event using `WatchEvent`. Imagine
-you need to load the counter value from some kind of backend or database that has
-asynchronous interface:
+Before going deeper, let's go to see an example event using `WatchEvent` protocol.
+Imagine that you need to load the counter value from some kind of backend or
+database that has asynchronous interface:
 
 ```clojure
 (defrecord CounterLoaded [value]
@@ -189,8 +189,8 @@ asynchronous interface:
 As you can see, if you want to perform asynchronous stuff, you should implement
 two events: one for fetch the counter and other for set it in the state.
 
-Furthermore, the flexibility of clojurescript allows us implement the `UpdateEvent`
-protocol directly to the javascript function, allowing us use plain functions
+However, the flexibility of clojurescript allows us implement the `UpdateEvent`
+protocol directly to the javascript function, allowing the use of plain functions
 as pure transformations event instances. So the previously code can be expressed
 in this manner:
 
@@ -211,8 +211,8 @@ The first most common problem that you will found using this approach is: **How 
 can syncronize two or more asynchronous events?**.
 
 A good use case for the demostration purposes is: *load some data* and then
-*redirect user to other page*. Using the previously defined events, let see how
-it can look:
+*redirect user to other page*. Using the previously defined events, let see how it
+can be approached:
 
 ```clojure
 (defrecord GoToCounter
@@ -233,18 +233,18 @@ something like autocompleting using this kind of constructions is quite simple.
 You should expect that two events passed to `emit!` function will be processed by
 the **streamloop** in order and pure state transformations will be executed in
 expected order, but the operations of resulting async operations will be executed
-in completly arbitrary order and the explained approach is one of them for
-synchronize two or more events.
+in completly arbitrary order and the explained approach serves for
+synchronize two or more asynchronous events.
 
 
 ## The state model ##
 
 An other very important part of the application architecture is how you have plan
-to model your state and how your components will have access to that state. There
+to model your state and how your components will have access to it. There
 are a lot of solutions to this and I think no one solution is more better than
-other because everything depends on the application type that you are developing.
+other because everything depends on type of the application.
 
-In my project I taken the approach that the whole state is visible to all
+In my project I taken the approach where the whole state is visible to all
 components. The coupling with state problem is solved in this way:
 
 - Small resuable components usually receives everything that they needs by
@@ -252,14 +252,14 @@ components. The coupling with state problem is solved in this way:
 - Big and/or not reusable components just access directly to the state or uses
   a [lenses][3] approach just for create a focused vision of the state.
 
-In fact, the direct access to the state is used in very little portion of code and
-almost always [lenses][3] are used. Maybe you are asking yourself: but that is this
-so called **lenses**?. As a very simplistic description: lenses are the *functional*
-approach to focus to some portion of data structure (tree or seequence like) for
-easy access to it or transform it.
+In fact, in [uxbox][1], the direct access to the state is used in very little
+portion of code and almost always [lenses][3] are used instead. Maybe you are now
+asking yourself: but that is this so called **lenses**? As a very simplistic
+description: lenses are the *functional* approach to focus to some portion of data
+structure (tree or seequence like) for easy access to it or transform it.
 
-But the most interesting and important part of lenses implemented in [lentes][3]
-library is the ability to derive atoms from other atoms:
+The most interesting and important part is the ability to derive atoms from other
+atoms that [lentes][3] library provides:
 
 ```clojure
 (require '[lentes.core :as l])
@@ -269,7 +269,8 @@ library is the ability to derive atoms from other atoms:
       (l/from-atom state)))
 ```
 
-Now you can use that derived atom in your component:
+Because it allows build new focused atoms with limited and/or completly transformed
+state and then, use them in components:
 
 ```clojure
 (rum/defc counter < rum/reactive
@@ -280,19 +281,19 @@ Now you can use that derived atom in your component:
      [:span counter]]))
 ```
 
-This allows you components only focus the smallest portion of the state and **does
-not trigger rerendering** of the component if other portion of the state is changed.
+One of the big advantages of using lenses in reactive components is because they
+**does not trigger the component rerendering** if other portion of the atom is
+modified.
 
-The lenses are not limited to tree like structures, in fact you can provide just
-plain function that receives the state as first arguent and should return the
-focused data. In fact, in the project where I'm using it, the state is modeled for
-facilitate the fast lookup by id instead of UI structure and the lenses are the
-reponsible to provide a specific views of the state ready to use from components.
+Also, the lenses are not limited to tree like structures, in fact you can provide
+just plain function that receives the state as first arguent and should return the
+focused data. In [uxbox][1] the state is strictly organized like a database using
+data normalization and indexing for fast lookup by id. Using lenses allows have
+different versions of state just adapted for the UI.
 
-An other very interesting property of lenses, is that are very composable just using
-clojurescript facilities for function composition `comp`, in the same way as
-the transducers works:
-
+An other very interesting property of lenses is that they are composable in the
+same way as transducers: using plain function composition facilities such as
+`comp`:
 
 ```clojure
 (defonce sample-state (atom {:foo {:bar 2}}))
@@ -313,8 +314,9 @@ the transducers works:
 
 Although, the derived atoms are mutable in the same way as normal atoms, the use
 of the explained approach of state management they works as read-only focused values
-because the state atom is just a materialization of the state that lives in the
+because the main state atom is just a materialization of the state that lives in the
 stream.
+
 
 ## Conclusion ##
 
@@ -325,9 +327,15 @@ I think is pretty flexible, and with little modifications surelly it can work we
 with different that mine (such as using [DataScript][4] for manage the state or
 anything else).
 
+## Referecences ##
+
+- [Event System][7] implemented in uxbox.
+
+
 [1]: https://github.com/uxbox/uxbox
 [2]: https://github.com/tonsky/rum
 [3]: https://github.com/funcool/lentes
 [4]: https://github.com/tonsky/datascript
 [5]: https://github.com/omcljs/om
 [6]: https://github.com/reagent-project/reagent
+[7]: https://github.com/uxbox/uxbox/blob/95c4f2fbc178d1e03f7765d6beae733ea8cf763b/src/uxbox/rstore.cljs
