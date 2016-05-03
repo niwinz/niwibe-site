@@ -259,7 +259,7 @@ description: lenses are the *functional* approach to focus to some portion of da
 structure (tree or seequence like) for easy access to it or transform it.
 
 The most interesting and important part is the ability to derive atoms from other
-atoms that [lentes][3] library provides:
+atoms:
 
 ```clojure
 (require '[lentes.core :as l])
@@ -269,8 +269,8 @@ atoms that [lentes][3] library provides:
       (l/from-atom state)))
 ```
 
-Because it allows build new focused atoms with limited and/or completly transformed
-state and then, use them in components:
+That allows create new derived atoms that focuses on exactly state that the
+component need:
 
 ```clojure
 (rum/defc counter < rum/reactive
