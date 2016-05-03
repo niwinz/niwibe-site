@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*- #
 
 AUTHOR = "Andrey Antukh"
-SITENAME = "Niwi.Nz"
+SITENAME = "niwi.nz"
 SITEURL = 'http://localhost:8000'
 
 TIMEZONE = "UTC"
