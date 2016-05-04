@@ -4,7 +4,7 @@ Author: Andrey Antukh
 
 This is a brief summary of the architectural decisions that I have taken when I
 have started the development of [uxbox][1] and with time I found that the result
-is scaling pretty well for relatively big project, so I dicided to write about it.
+is scaling pretty well for relatively big project, so I decided to write about it.
 
 ## TL;DR ##
 
@@ -89,7 +89,7 @@ Do not worry about them, they will be explained later with better examples.
 ### Stream Loop ###
 
 In order to start playing with events, there are two additional functions:
-`init` and `emit!`. The `init` funtion just initializes something that I name
+`init` and `emit!`. The `init` funtion just initializes something that I call
 **streamloop**, it receives a initial state and returns a stream of state
 transformations:
 
@@ -116,7 +116,7 @@ emit event instances into the stream:
 ;; => nil
 ```
 
-If we subscribe to the stream returned by `init` function before emiting any events
+If we subscribe to the stream returned by `init` function before emiting any events,
 we will obtain a stream of state snapshots after each applied transformation:
 
 ```clojure
@@ -128,7 +128,7 @@ we will obtain a stream of state snapshots after each applied transformation:
 ;; [console] state: {:counter 2}
 ```
 
-Obviously, every approach has its advantages and tradeoff's, in this case the
+Obviously, every approach has its advantages and tradeoff's. In this case, the
 advantadge and the tradeoff at the same time is that the state lives in the stream,
 so it only can be modified emiting events.
 
@@ -155,7 +155,7 @@ Let see a little example using rum:
 The state is materialized into atom and then used in a example rum component.
 
 Independently of the explained tradeoff, this approach is quite flexible because
-it does not dictates how you should pass the state to the UI components. In fact
+it does not dictate how you should pass the state to the UI components. In fact
 this approach can be used without problems with [om][5] or [reagent][6] based
 applications.
 
@@ -241,10 +241,10 @@ synchronize two or more asynchronous events.
 
 An other very important part of the application architecture is how you have plan
 to model your state and how your components will have access to it. There
-are a lot of solutions to this and I think no one solution is more better than
-other because everything depends on type of the application.
+are a lot of solutions to this and I think no solution is better than another
+because everything depends on type of the application.
 
-In my project I taken the approach where the whole state is visible to all
+In my project I've taken the approach where the whole state is visible to all
 components. The coupling with state problem is solved in this way:
 
 - Small resuable components usually receives everything that they needs by
@@ -286,7 +286,7 @@ One of the big advantages of using lenses in reactive components is because they
 modified.
 
 Also, the lenses are not limited to tree like structures, in fact you can provide
-just plain function that receives the state as first arguent and should return the
+just a plain function that receives the state as first arguent and should return the
 focused data. In [uxbox][1] the state is strictly organized like a database using
 data normalization and indexing for fast lookup by id. Using lenses allows have
 different versions of state just adapted for the UI.
