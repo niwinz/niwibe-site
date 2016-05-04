@@ -1,10 +1,13 @@
 Title: Application architecture and state management with react based applications.
-Tags: rum, react, clojurescript
+Tags: rum, react, clojurescript, architecture
 Author: Andrey Antukh
 
 This is a brief summary of the architectural decisions that I have taken when I
 have started the development of [uxbox][1] and with time I found that the result
 is scaling pretty well for relatively big project, so I dicided to write about it.
+
+I will use ClojureScript as base lenguage but the main ideas explained here can
+be done with plain javascript with minor adaptations.
 
 ## TL;DR ##
 
@@ -88,8 +91,28 @@ Do not worry about them, they will be explained later with better examples.
 
 ### Stream Loop ###
 
-In order to start playing with events, there are two additional functions:
-`init` and `emit!`. The `init` funtion just initializes something that I name
+In order to start playing with events, there are two additional functions,
+`init` and `emit!`.
+
+```clojure
+(defonce ^:private bus (rx/bus))
+
+(defn emit!
+  "Emits an event or a collection of them."
+  ([event]
+   (rx/push! bus event))
+  ([event & events]
+   (run! emit! (cons event events))))
+
+(defn init
+  "Initializes the stream event loop and
+  return a stream with model changes."
+  [state]
+  ;; [implementation ommited]
+  ))
+```
+
+The `init` funtion just initializes something that I name
 **streamloop**, it receives a initial state and returns a stream of state
 transformations:
 
@@ -107,7 +130,7 @@ each transformations. At this moment you should not care how `init` is implement
 because is important to understand its purpose to be here (the complete
 implementation of that is referenced on the end of this article).
 
-And later, the `emit!` variadic function, that just does that you will expect:
+And later, the `emit!` variadic function, that just does that you will expect,
 emit event instances into the stream:
 
 ```clojure
