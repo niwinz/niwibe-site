@@ -238,7 +238,7 @@ A good use case for the demostration purposes is: *load some data* and then
 can be approached:
 
 ```clojure
-(defrecord GoToCounter
+(defrecord GoToCounter []
   WatchEvent
   (-apply-watch [_ state stream]
     (rx/merge
