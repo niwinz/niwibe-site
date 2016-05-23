@@ -52,7 +52,7 @@ toy project that manages one unique counter:
 (defrecord Increment [n]
   UpdateEvent
   (-apply-update [_ state]
-    (update state :counter (fnil inc 0))))
+    (update state :counter (fnil #(+ n %) 0))))
 
 (defn increment
   "Create an instance of Increment event."
