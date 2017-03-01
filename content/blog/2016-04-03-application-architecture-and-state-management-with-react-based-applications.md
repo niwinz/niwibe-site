@@ -41,7 +41,7 @@ pure state transformation event is defined:
   "Defines a simple state transformation.
   It receives a state and should return the
   transformed state."
-  (-apply-update [event state]))
+  (update [event state]))
 
 ```
 
@@ -51,7 +51,7 @@ toy project that manages one unique counter:
 ```clojure
 (defrecord Increment [n]
   UpdateEvent
-  (-apply-update [_ state]
+  (update [_ state]
     (update state :counter (fnil #(+ n %) 0))))
 
 (defn increment
@@ -77,13 +77,13 @@ two events can be defined:
   stream of events and should return an other stream
   of same kind of events (that can be of `UpdateEvent`,
   `WatchEvent` or `EffectEvent`."
-  (-apply-watch [event state stream]))
+  (watch [event state stream]))
 
 (defprotocol EffectEvent
   "Defines a side effectfull action.
   It receves the state and the reference to the current
   stream of events. The return value will be ignored."
-  (-apply-effect [event state stream]))
+  (effect [event state stream]))
 ```
 
 Do not worry about them, they will be explained later with better examples.
@@ -195,12 +195,12 @@ database that has asynchronous interface:
 ```clojure
 (defrecord CounterLoaded [value]
   UpdateEvent
-  (-apply-update [_ state]
+  (update [_ state]
     (assoc state :counter value)))
 
 (defrecord LoadCounter [path]
   WatchEvent
-  (-apply-watch [_ state stream]
+  (watch [_ state stream]
     (->> (http/get path)
          (rx/from-promise)
          (rx/map ->CounterLoaded))))
@@ -220,7 +220,7 @@ in this manner:
 ```clojure
 (defrecord LoadCounter [path]
   WatchEvent
-  (-apply-watch [_ state stream]
+  (watch [_ state stream]
     (->> (http/get path)
          (rx/from-promise)
          (rx/map (fn [value]
@@ -240,7 +240,7 @@ can be approached:
 ```clojure
 (defrecord GoToCounter []
   WatchEvent
-  (-apply-watch [_ state stream]
+  (watch [_ state stream]
     (rx/merge
       (rx/of (load-counter))
       (->> stream
@@ -248,7 +248,7 @@ can be approached:
            (rx/map (fn [_] #(assoc % :location :counter)))))))
 ```
 
-The third parameter on `-apply-watch` is a reference to the main stream where
+The third parameter on `watch` is a reference to the main stream where
 `emit!` publish events. So you can subscribe to changes that will hapen in some
 future and react in terms of them. As streams are cancellable by default, implement
 something like autocompleting using this kind of constructions is quite simple.
@@ -264,7 +264,7 @@ synchronize two or more asynchronous events.
 
 An other very important part of the application architecture is how you have plan
 to model your state and how your components will have access to it. There
-are a lot of solutions to this and I think no solution is better than another 
+are a lot of solutions to this and I think no solution is better than another
 because everything depends on type of the application.
 
 In my project I've taken the approach where the whole state is visible to all
@@ -350,9 +350,11 @@ I think is pretty flexible, and with little modifications surelly it can work we
 with different that mine (such as using [DataScript][4] for manage the state or
 anything else).
 
+
 ## Referecences ##
 
-- [Event System][7] implemented in uxbox.
+- [Event System][8] used currently on uxbox
+- [Event System][7] implemented in old version of uxbox.
 
 
 [1]: https://github.com/uxbox/uxbox
@@ -362,3 +364,4 @@ anything else).
 [5]: https://github.com/omcljs/om
 [6]: https://github.com/reagent-project/reagent
 [7]: https://github.com/uxbox/uxbox/blob/95c4f2fbc178d1e03f7765d6beae733ea8cf763b/src/uxbox/rstore.cljs
+[8]: https://github.com/funcool/potok
