@@ -1,3 +1,11 @@
-Markdown==2.3.1
+blinker==1.4
 docutils==0.11
+feedgenerator==1.9
+Jinja2==2.9.5
+Markdown==2.3.1
+MarkupSafe==0.23
 pelican==3.3
+Pygments==2.2.0
+pytz==2016.10
+six==1.10.0
+Unidecode==0.4.20
