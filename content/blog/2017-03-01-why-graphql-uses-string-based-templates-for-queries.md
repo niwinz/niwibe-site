@@ -25,11 +25,10 @@ some [strange way to include conditionals][1].
 
 [1]: http://graphql.org/learn/queries/#directives
 
-Obviously, this is my personal opinion, I hope no one feels attacked
-by my words; and does not misunderstand me, GraphQL is full of very
-very good ideas, it is just that the implementation is not so good as
-the main idea. And for being a little bit constructive I'll try to
-expose my ideas around the main idea of the GraphQL.
+Does not misunderstand me, GraphQL is full of very very good ideas, it
+is just that the implementation is not so good as the main idea. And
+for being a little bit constructive I'll try to expose my ideas around
+the main idea of the GraphQL.
 
 In my vision of that, I think that the query should be represented by
 something more composable and transformable. A great example would be
