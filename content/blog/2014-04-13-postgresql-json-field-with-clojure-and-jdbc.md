@@ -6,7 +6,7 @@ and jdbc?
 
 It is very simple!
 
-**clojure.jdbc** exposes some protocols (`jdbc.types/ISQLType` and `jdbc.types/ISQLResultSetReadColumn`)
+**clojure.jdbc** exposes some protocols (`jdbc.proto/ISQLType` and `jdbc.proto/ISQLResultSetReadColumn`)
 to extend user types making them compatible with jdbc in both directions.
 
 The first handles conversion from user type to jdbc compatible type and the second handles the
@@ -15,7 +15,7 @@ backward process (from sql/jdbc type to user type).
 This is a working example of implementing these protocols for json support:
 
 ```clojure
-(require '[jdbc.types :as types])
+(require '[jdbc.proto :as proto])
 
 ;; Import class that postgresql jdbc implementation
 ;; uses for handle custom types.
@@ -27,7 +27,7 @@ This is a working example of implementing these protocols for json support:
 ;; ISQLType handles a conversion from user type to jdbc compatible
 ;; types. In this case we are extending any implementation of clojure
 ;; IPersistentMap (for convert it to json string).
-(extend-protocol types/ISQLType
+(extend-protocol proto/ISQLType
   clojure.lang.IPersistentMap
 
   ;; This method, receives a instance of IPersistentMap and
@@ -40,12 +40,12 @@ This is a working example of implementing these protocols for json support:
   ;; This method handles assignation of now converted type
   ;; to jdbc statement instance.
   (set-stmt-parameter! [self conn stmt index]
-    (.setObject stmt index (types/as-sql-type self conn))))
+    (.setObject stmt index (proto/as-sql-type self conn))))
 
 ;; ISQLResultSetReadColumn handles the conversion from sql types
 ;; to user types. In this case, we are extending PGobject for handle
 ;; json field conversions to clojure hash-map.
-(extend-protocol types/ISQLResultSetReadColumn
+(extend-protocol proto/ISQLResultSetReadColumn
   PGobject
   (from-sql-type [pgobj conn metadata i]
     (let [type  (.getType pgobj)
